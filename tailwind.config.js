@@ -12,8 +12,12 @@ module.exports = {
           DEFAULT: "#3b82f6",
           dark: "#60a5fa",
         },
+        back: "#EFECE3",
+        text: "#000000",
+        main: "#4A70A9",
+        point: "#8FABD4",
       },
     },
   },
   plugins: [],
-}
+};
