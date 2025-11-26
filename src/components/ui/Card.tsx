@@ -18,7 +18,7 @@ export const Card: React.FC<CardProps> = (props) => {
     <div>
       {data.map((detail, i) => (
         <div className="pb-4">
-          <ul key={i} className="bg-point p-4 rounded-2xl">
+          <ul key={i} className="bg-point/50 p-4 rounded-2xl">
             <li>{detail.title}</li>
             <li>{detail.role}</li>
             <li>{detail.date}</li>
