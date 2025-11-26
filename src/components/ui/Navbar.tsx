@@ -25,7 +25,7 @@ export const Navbar = ({
               onClick={() => onNavClick(item.id)}
               className={
                 activeSection === item.id
-                  ? "text-white"
+                  ? "text-text"
                   : "text-white hover:text-gray-300 transition-colors"
               }
               key={item.id}

@@ -2,6 +2,7 @@
 import { Navbar } from "@/components/ui/Navbar";
 import About from "@/components/sections/About";
 import { useEffect, useState } from "react";
+import { CareerSection } from "@/components/sections/CareerSection";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("home");
@@ -11,25 +12,46 @@ export default function Home() {
 
   useEffect(() => {
     setIsClient(true);
-  }, []);
 
-  const handleScroll = () => {
-    setScrollY(window.scrollY);
-  };
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
+      // 스크롤 위치에 따라 활성 섹션 업데이트
+      const sections = ["home", "skills", "projects", "career", "contact"];
+      const currentSection = sections.find((section) => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return rect.top <= 100 && rect.bottom >= 100;
+        }
+        return false;
+      });
+
+      if (currentSection && currentSection !== activeSection) {
+        setActiveSection(currentSection);
+      }
     };
-  }, []);
 
-  const scrollToSection = (section: string) => {
-    const element = document.getElementById(section);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [activeSection]);
+
+  const scrollToSection = (sectionId: string) => {
+    setActiveSection(sectionId);
+    setIsMenuOpen(false);
+    const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  const handleScrollDown = () => {
+    scrollToSection("about");
+  };
+
+  if (!isClient) {
+    return null; // 로딩 스피너 또는 null 반환
+  }
 
   return (
     <div>
@@ -41,7 +63,8 @@ export default function Home() {
         onMenuToggle={() => setIsMenuOpen(!isMenuOpen)}
       />
       <main>
-        <About />
+        <About onScrollDown={handleScrollDown} />
+        <CareerSection />
       </main>
     </div>
   );

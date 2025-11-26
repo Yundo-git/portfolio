@@ -11,7 +11,7 @@ export default function About({ onScrollDown }: AboutProps) {
       className="min-h-screen flex items-center justify-center px-4"
     >
       <div className="text-center max-w-4xl mx-auto ">
-        <div className="mb-8 flex flex-col gap-4 items-center justify-center">
+        <div className="mb-4 flex flex-col gap-4 items-center justify-center">
           <div className="w-32 h-32 mx-auto bg-white/50 rounded-full flex items-center justify-center text-6xl">
             💻
           </div>
@@ -20,9 +20,9 @@ export default function About({ onScrollDown }: AboutProps) {
             Frontend Developer
           </p>
         </div>
-        <p className="text-sm">* 이 페이지는 Next.js로 제작되었습니다.</p>
+        <p className="text-sm mb-4">* 이 페이지는 Next.js로 제작되었습니다.</p>
 
-        <div className="flex justify-center space-x-6 mb-12 ">
+        <div className="flex justify-center space-x-4 mb-4">
           <a
             href="https://github.com/Yundo-git"
             target="_blank"
