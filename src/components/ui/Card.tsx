@@ -1,31 +1,52 @@
 import React from "react";
-import { CareerItem, careers } from "@/data/careers";
+import { CareerItem } from "@/data/careers";
+import { SkillGroup } from "@/data/skills";
 
-type CardPropsCareer = {
-  careerData: CareerItem[];
-  projectData?: never;
-  skillData?: never;
+type CardProps = {
+  careerData?: CareerItem[];
+  skillData?: SkillGroup[];
+  projectData?: never; // Add other data types as needed
 };
 
-type CardProps = CardPropsCareer;
-// | CardPropsProject | CardPropsSkill; // 👈 유니온 확장
+export const Card: React.FC<CardProps> = ({ careerData, skillData }) => {
+  if (careerData) {
+    return (
+      <div>
+        {careerData.map((detail, i) => (
+          <div className="pb-4" key={i}>
+            <ul className="bg-point/50 p-4 rounded-2xl">
+              <li className="font-bold">{detail.title}</li>
+              <li>{detail.role}</li>
+              <li className="text-sm text-gray-400">{detail.date}</li>
+              <li className="mt-2">{detail.description}</li>
+            </ul>
+          </div>
+        ))}
+      </div>
+    );
+  }
 
-export const Card: React.FC<CardProps> = (props) => {
-  console.log(careers);
+  if (skillData) {
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {skillData.map((group, i) => (
+          <div key={i} className="bg-point/50 p-6 rounded-2xl">
+            <h3 className="text-lg font-bold mb-3">{group.category}</h3>
+            <div className="flex flex-wrap gap-2">
+              {group.items.map((skill, skillIdx) => (
+                <span
+                  key={skillIdx}
+                  className="bg-white/10 px-3 py-1 rounded-full text-sm"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
 
-  const data = careers; //여기 나중에 if문으로 바꿔가면서 넣기
-  return (
-    <div>
-      {data.map((detail, i) => (
-        <div className="pb-4">
-          <ul key={i} className="bg-point/50 p-4 rounded-2xl">
-            <li>{detail.title}</li>
-            <li>{detail.role}</li>
-            <li>{detail.date}</li>
-            <li>{detail.description}</li>
-          </ul>
-        </div>
-      ))}
-    </div>
-  );
+  return null;
 };
