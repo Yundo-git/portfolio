@@ -262,22 +262,32 @@ export const Card: React.FC<CardProps> = ({
 
   if (contactData) {
     return (
-      <div className="w-[50vw]">
-        <div className="bg-white p-6 rounded-2xl flex flex-col gap-2 items-center justify-center">
-          <div className="flex items-center gap-2">
-            <Mail size={28} />
-            <a href={`mailto:${contactData.Mail}`}>{contactData.Mail}</a>
+      <div className="w-full md:w-[50vw] px-4 md:px-0">
+        <div className="bg-white p-4 md:p-6 rounded-2xl flex flex-col gap-3 md:gap-4">
+          <a
+            href={`mailto:${contactData.Mail}`}
+            className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors"
+          >
+            <Mail className="w-6 h-6 md:w-7 md:h-7 text-gray-600 flex-shrink-0" />
+            <span className="text-base md:text-lg break-all">
+              {contactData.Mail}
+            </span>
+          </a>
+
+          <div className="flex items-center gap-3 p-3">
+            <Phone className="w-6 h-6 md:w-7 md:h-7 text-gray-600 flex-shrink-0" />
+            <span className="text-base md:text-lg">{contactData.Phone}</span>
           </div>
-          <div className="flex items-center gap-2">
-            <Phone size={28} />
-            <p>{contactData.Phone}</p>
-          </div>
-          <div className="flex items-center gap-2">
-            <Github size={28} />
-            <a href={`https://github.com/${contactData.Github}`}>
-              {contactData.Github}
-            </a>
-          </div>
+
+          <a
+            href={`https://github.com/${contactData.Github}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors"
+          >
+            <Github className="w-6 h-6 md:w-7 md:h-7 text-gray-600 flex-shrink-0" />
+            <span className="text-base md:text-lg">{contactData.Github}</span>
+          </a>
         </div>
       </div>
     );
