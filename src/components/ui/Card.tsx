@@ -2,17 +2,20 @@ import React from "react";
 import { CareerItem } from "@/data/careers";
 import { SkillGroup } from "@/data/skills";
 import { Project } from "@/data/projects";
+import { Contact } from "@/data/contact";
 
 type CardProps = {
   careerData?: CareerItem[];
   skillData?: SkillGroup[];
   projectData?: Project[]; // Add other data types as needed
+  contactData?: Contact;
 };
 
 export const Card: React.FC<CardProps> = ({
   careerData,
   skillData,
   projectData,
+  contactData,
 }) => {
   if (careerData) {
     return (
@@ -71,5 +74,15 @@ export const Card: React.FC<CardProps> = ({
     );
   }
 
+  if (contactData) {
+    return (
+      <div className="w-[50vw]">
+        <div className="bg-white p-6 rounded-2xl flex flex-col gap-2 items-center justify-center">
+          <p>{contactData.Mail}</p>
+          <p>{contactData.Phone}</p>
+        </div>
+      </div>
+    );
+  }
   return null;
 };

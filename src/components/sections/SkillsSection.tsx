@@ -9,8 +9,11 @@ export const SkillsSection = () => {
       id="skills"
       className="min-h-screen flex items-center justify-center px-4"
     >
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-8 text-center">Skills</h2>
+      <div className="flex flex-col">
+        <div className="text-center max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">스킬</h2>
+          <p className="text-xl md:text-2xl text-gray-300 mb-6">Skills </p>
+        </div>
         <div className="max-w-5xl mx-auto">
           <Card skillData={skills} />
         </div>
