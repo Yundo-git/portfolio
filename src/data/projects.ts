@@ -26,8 +26,8 @@ export const projects: Project[] = [
       "Redux를 활용한 전역 상태 관리",
     ],
     links: {
-      demo: "https://babynote.netlify.app/",
-      github: "https://github.com/SeSAC-refactoring/cutebaby.git",
+      demo: "https://app.barohanpo.xyz/",
+      github: "https://github.com/Yundo-git/barohanpo_Fe.git",
     },
   },
   {
