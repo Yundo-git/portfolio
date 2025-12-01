@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
 import { navItems } from "@/data/navItems";
 
@@ -19,12 +19,19 @@ export const Navbar = ({
 }: NavbarProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const initialRender = useRef(true);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-      if (window.innerWidth >= 768) {
-        onMenuToggle(); // Close menu when resizing to desktop
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+
+      // Only close menu when switching from mobile to desktop
+      if (initialRender.current) {
+        initialRender.current = false;
+        if (!mobile && isMenuOpen) {
+          onMenuToggle();
+        }
       }
     };
 
@@ -36,7 +43,7 @@ export const Navbar = ({
 
     // Clean up
     return () => window.removeEventListener("resize", handleResize);
-  }, [onMenuToggle]);
+  }, [isMenuOpen, onMenuToggle]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,7 +67,7 @@ export const Navbar = ({
         isScrolled ? "bg-main/95 backdrop-blur-sm shadow-md" : "bg-main"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className=" px-4">
         <nav className="flex items-center justify-between h-16">
           {/* Logo */}
           <h1 className="text-white text-xl font-bold">YDH</h1>
@@ -70,7 +77,7 @@ export const Navbar = ({
             {navItems.map((item) => (
               <button
                 onClick={() => handleNavClick(item.id)}
-                className={`px-3 py-2 text-sm font-medium transition-colors ${
+                className={`px-2 py-2 text-sm font-medium transition-colors ${
                   activeSection === item.id
                     ? "text-text font-semibold"
                     : "text-white hover:text-gray-300"
