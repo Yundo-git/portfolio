@@ -4,6 +4,7 @@ import About from "@/components/sections/About";
 import { useEffect, useState } from "react";
 import { CareerSection } from "@/components/sections/CareerSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
+import { ProjectSection } from "@/components/sections/ProjectSection";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("home");
@@ -67,6 +68,7 @@ export default function Home() {
         <About onScrollDown={handleScrollDown} />
         <CareerSection />
         <SkillsSection />
+        <ProjectSection />
       </main>
     </div>
   );

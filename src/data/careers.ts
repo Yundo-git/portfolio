@@ -14,12 +14,6 @@ export const careers: CareerItem[] = [
       "빌드업 사업팀 풀스택 개발자로 주로 프론트엔드와 백엔드 일부 개발",
   },
   {
-    title: "청년취업사관학교",
-    date: "2024.10 - 2025.02",
-    role: "Apple, 하나의 UI/UX 웹 프론트엔드 과정",
-    description: "수료",
-  },
-  {
     title: "룩업",
     date: "2022.03 - 2024.10",
     role: "공동창업",

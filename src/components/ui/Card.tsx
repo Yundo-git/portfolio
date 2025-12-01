@@ -1,14 +1,19 @@
 import React from "react";
 import { CareerItem } from "@/data/careers";
 import { SkillGroup } from "@/data/skills";
+import { Project } from "@/data/projects";
 
 type CardProps = {
   careerData?: CareerItem[];
   skillData?: SkillGroup[];
-  projectData?: never; // Add other data types as needed
+  projectData?: Project[]; // Add other data types as needed
 };
 
-export const Card: React.FC<CardProps> = ({ careerData, skillData }) => {
+export const Card: React.FC<CardProps> = ({
+  careerData,
+  skillData,
+  projectData,
+}) => {
   if (careerData) {
     return (
       <div>
@@ -42,6 +47,24 @@ export const Card: React.FC<CardProps> = ({ careerData, skillData }) => {
                 </span>
               ))}
             </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  if (projectData) {
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {projectData.map((project, i) => (
+          <div key={i} className="bg-point/50 p-6 rounded-2xl">
+            <h3 className="text-lg font-bold mb-3">{project.title}</h3>
+            <p>{project.description}</p>
+            <p>{project.period}</p>
+            <p>{project.tech}</p>
+            <p>{project.features}</p>
+            <p>{project.links.demo}</p>
+            <p>{project.links.github}</p>
           </div>
         ))}
       </div>

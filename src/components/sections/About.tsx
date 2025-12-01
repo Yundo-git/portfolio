@@ -20,7 +20,9 @@ export default function About({ onScrollDown }: AboutProps) {
             Frontend Developer
           </p>
         </div>
-        <p className="text-sm mb-4">* 이 페이지는 Next.js로 제작되었습니다.</p>
+        <p className="text-sm mb-4">
+          * 이 페이지는 Next.js/tailwindCss로 제작되었습니다.
+        </p>
 
         <div className="flex justify-center space-x-4 mb-4">
           <a
