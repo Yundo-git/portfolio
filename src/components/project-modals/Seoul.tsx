@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react"; // 페이지 넘기기
 
 const SeoulContent: React.FC = () => {
   const [step, setStep] = useState(1);
-  const totalSteps = 3; // 프로젝트 상세 내용을 3개의 페이지로 나눈다고 가정
+  const totalSteps = 5; // 페이지 몇개인지 정하기
 
   const goToNext = () => setStep((prev) => Math.min(prev + 1, totalSteps));
   const goToPrev = () => setStep((prev) => Math.max(prev - 1, 1));
@@ -19,8 +19,8 @@ const SeoulContent: React.FC = () => {
               프로젝트 개요
             </h4>
             <p className="text-lg">
-              서울 관광객들을 위한 서울의 여행지,날씨,교통을 편하게 알려주는
-              사이트
+              서울 관광객들을 위한 서울의 여행지,날씨,교통을 편하게
+              알려주는사이트입니다.
             </p>
             <div className="mt-4 p-4 bg-gray-50 rounded-lg">
               <p>
@@ -49,32 +49,81 @@ const SeoulContent: React.FC = () => {
         return (
           <>
             <h4 className="text-xl font-semibold mt-0 mb-3 text-gray-800 dark:text-gray-200">
-              담당파트
+              담당파트(1/4)
             </h4>
+            <ul>
+              <h3>
+                프로젝트에서 <b>"교통"</b> 페이지를 제작하였습니다.
+              </h3>
+              <li>
+                카카오 맵 API를 연동하여 서울의 맛집, 관광지의 검색 기능을
+                개발하였습니다.
+              </li>
+
+              <img src="/seoul/1.png" alt="서울 교통 페이지 카카오 api이미지" />
+
+              <li>
+                검색 후 지도에 표시되는 마커를 클릭하면 카카오 맵 사이트로
+                이동되어 자세한 정보를 확인 할 수 있습니다.
+              </li>
+            </ul>
           </>
         );
       case 3:
         return (
           <>
             <h4 className="text-xl font-semibold mt-0 mb-3 text-gray-800 dark:text-gray-200">
-              핵심 기능 구현
+              담당파트(2/4)
             </h4>
             <ul className="list-disc list-inside space-y-2 ml-4">
               <li>
-                **맞춤형 영양제 추천 시스템:** 사용자 설문 결과를 기반으로 약사
-                추천 로직을 구현하고 추천 결과를 시각적으로 제공.
+                서울에 처음오는 관광객들을 위한 교통 정보를 알려주는 기능을 개발
+                하였습니다.
               </li>
+
+              <img src="/seoul/2.png" alt="서울 교통 배너 이미지" />
+
               <li>
-                **약국 방문 예약 기능:** 사용자가 원하는 약국과 시간을 선택하고
-                예약하는 기능을 구현.
-              </li>
-              <li>
-                **약사/사용자 인증 분리:** 권한을 분리하여 안전한 데이터 접근 및
-                서비스 이용 환경 구축.
+                각 배너를 클릭하게 되면 해당 정보를 자세하게 알려주는 페이지로
+                이동하게 됩니다.
               </li>
             </ul>
           </>
         );
+
+      case 4:
+        return (
+          <>
+            <h4 className="text-xl font-semibold mt-0 mb-3 text-gray-800 dark:text-gray-200">
+              담당파트(3/4)
+            </h4>
+            <ul className="list-disc list-inside space-y-2 ml-4">
+              <li>
+                “여행지”페이지에서 OpenAPI를 연동하고 불러온 데이터를 가공 후
+                지도에 클릭 된 지역 별로 필터링되는 기능을 개발 하였습니다.
+              </li>
+              <img src="/seoul/5.png" alt="서울지도 이미지" />
+              <li>
+                지도의 지역을 클릭하게 되면 해당 지역의 관광지가 나오게 됩니다.
+              </li>
+              <img src="/seoul/3.png" alt="서울 여행지 페이지 이미지" />
+            </ul>
+          </>
+        );
+
+      case 5:
+        return (
+          <>
+            <h4 className="text-xl font-semibold mt-0 mb-3 text-gray-800 dark:text-gray-200">
+              담당파트(4/4)
+            </h4>
+            <ul className="list-disc list-inside space-y-2 ml-4">
+              <li>교통 수단 별 선호 여행지를 받아와 리스트화 했습니다.</li>
+              <img src="/seoul/4.png" alt="서울지도 이미지" />
+            </ul>
+          </>
+        );
+
       default:
         return null;
     }
