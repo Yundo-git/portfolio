@@ -40,6 +40,7 @@ const BabynoteContent: React.FC = () => {
               <div className="p-4 bg-blue-50 rounded-lg">
                 <p className="font-semibold text-blue-800">프로젝트 이름</p>
                 <p className="text-lg font-bold">꼬물꼬물, 디지털 아기수첩</p>
+                <p className="text-sm">현재 백엔드 배포 중지 상태입니다.</p>
               </div>
 
               <div className="p-4 bg-green-50 rounded-lg">
