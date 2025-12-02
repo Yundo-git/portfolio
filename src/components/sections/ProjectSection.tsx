@@ -16,6 +16,9 @@ export const ProjectSection = () => {
           {/* 간소화된 Card 컴포넌트 사용 */}
           <Card projectData={projects} />
         </div>
+        <p className="text-center text-gray-500 pt-4">
+          * 개인 및 팀프로젝트의 내용만 있으며, 사내 프로젝트는 제외되었습니다.
+        </p>
       </div>
     </section>
   );

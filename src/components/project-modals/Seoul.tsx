@@ -16,17 +16,32 @@ const SeoulContent: React.FC = () => {
         return (
           <>
             <h4 className="text-xl font-semibold mt-0 mb-3 text-gray-800 dark:text-gray-200">
-              🔍 프로젝트 개요 (1/3)
+              프로젝트 개요
             </h4>
             <p className="text-lg">
-              **바로한포**는 사용자의 건강 정보 및 라이프스타일을 분석하여
-              **약사가 직접 영양제를 추천**해주고, **약국 방문 예약**까지 가능한
-              헬스케어 웹 서비스입니다. Next.js와 TypeScript 기반의 안정적인
-              환경에서 사용자 경험 최적화에 중점을 두어 개발되었습니다.
+              서울 관광객들을 위한 서울의 여행지,날씨,교통을 편하게 알려주는
+              사이트
             </p>
             <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+              <p>
+                <b>프로젝트 이름:</b> 서울서울
+              </p>
+              <p>
+                <b>팀원:</b> 4명
+              </p>
+            </div>
+            <div className="mt-4 p-4 bg-gray-50 rounded-lg">
               <p className="font-bold">주요 기술 스택:</p>
-              <p>Next.js, TypeScript, Node.js, AWS (EC2, RDS, S3), MySQL</p>
+              <p>JavaScript, css, html, figma, OpenAPI, bootstrap</p>
+            </div>
+            <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+              <p className="font-bold">주요기능:</p>
+              <ul>
+                <li>- 카카오 맵 API를 활용한 맛집/관광지 검색</li>
+                <li>- 지역별 여행지 필터링 기능</li>
+                <li>- 교통 정보 안내 페이지 개발</li>
+                <li>- OpenAPI 데이터 가공 및 활용</li>
+              </ul>
             </div>
           </>
         );
@@ -34,30 +49,15 @@ const SeoulContent: React.FC = () => {
         return (
           <>
             <h4 className="text-xl font-semibold mt-0 mb-3 text-gray-800 dark:text-gray-200">
-              ⚙️ 기술 및 인프라 (2/3)
+              담당파트
             </h4>
-            <ul className="list-disc list-inside space-y-2 ml-4">
-              <li>
-                **Full-Stack 개발:** Next.js (FE), Node.js (BE)를 사용하여
-                서비스 전반을 구축하고 배포했습니다.
-              </li>
-              <li>
-                **보안 및 인증:** **JWT** 기반 토큰 인증 시스템을 구현하여 REST
-                API 통신의 보안을 강화했습니다.
-              </li>
-              <li>
-                **인프라 구축:** **AWS (EC2, RDS, S3)**를 활용하여 안정적인 서버
-                환경을 구성하고 **Nginx**를 이용한 리버스 프록시 및 로드 밸런싱
-                설정을 담당했습니다.
-              </li>
-            </ul>
           </>
         );
       case 3:
         return (
           <>
             <h4 className="text-xl font-semibold mt-0 mb-3 text-gray-800 dark:text-gray-200">
-              🎯 핵심 기능 구현 (3/3)
+              핵심 기능 구현
             </h4>
             <ul className="list-disc list-inside space-y-2 ml-4">
               <li>
@@ -82,10 +82,6 @@ const SeoulContent: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white border-b pb-2">
-        💊 바로한포: 약사 추천 영양제 서비스 상세
-      </h3>
-
       <div className="min-h-[300px] p-4 border rounded-lg bg-white dark:bg-gray-800 transition-opacity duration-300">
         {renderContent()}
       </div>

@@ -43,7 +43,7 @@ export const Modal = ({ isOpen, onClose, children, title }: ModalProps) => {
             <X size={24} />
           </button>
         </div>
-        <div className="p-6">{children}</div>
+        <div className="p-4">{children}</div>
       </div>
     </div>
   );

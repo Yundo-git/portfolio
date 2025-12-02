@@ -172,7 +172,7 @@ export const ProjectCardList: React.FC<ProjectCardListProps> = ({
             </div>
 
             {/* 프로젝트 컨텐츠 렌더링 (ContentComponent 내부에서 페이지네이션 처리) */}
-            <div className="py-4">
+            <div>
               <selectedProject.ContentComponent />
             </div>
 
