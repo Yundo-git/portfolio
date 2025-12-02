@@ -249,7 +249,7 @@ const response = await axios.post(
         return (
           <>
             <h4 className="text-xl font-semibold mt-0 mb-3 text-gray-800 dark:text-gray-200">
-              프로젝트 미리보기
+              프로젝트 미리보기(사진캡처 진행중입니다.)
             </h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="border rounded-lg overflow-hidden">
