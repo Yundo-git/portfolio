@@ -1,32 +1,72 @@
-// Barohanpo.tsx
-import React, { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react"; // 페이지 넘기기 아이콘 사용
+// Babynote.tsx
+import React, { useState, useEffect, useRef } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const BabynoteContent: React.FC = () => {
   const [step, setStep] = useState(1);
-  const totalSteps = 3; // 프로젝트 상세 내용을 3개의 페이지로 나눈다고 가정
+  const totalSteps = 6;
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  // 스크롤을 맨 위로 올리는 함수
+  const scrollToTop = () => {
+    if (contentRef.current) {
+      contentRef.current.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  useEffect(() => {
+    scrollToTop();
+  }, [step]);
 
   const goToNext = () => setStep((prev) => Math.min(prev + 1, totalSteps));
   const goToPrev = () => setStep((prev) => Math.max(prev - 1, 1));
 
-  // --- 페이지별 내용 정의 ---
   const renderContent = () => {
     switch (step) {
       case 1:
         return (
           <>
             <h4 className="text-xl font-semibold mt-0 mb-3 text-gray-800 dark:text-gray-200">
-              🔍 프로젝트 개요 (1/3)
+              프로젝트 소개
             </h4>
-            <p className="text-lg">
-              **바로한포**는 사용자의 건강 정보 및 라이프스타일을 분석하여
-              **약사가 직접 영양제를 추천**해주고, **약국 방문 예약**까지 가능한
-              헬스케어 웹 서비스입니다. Next.js와 TypeScript 기반의 안정적인
-              환경에서 사용자 경험 최적화에 중점을 두어 개발되었습니다.
+            <p className="text-lg mb-4">
+              아기수첩, 알고계신가요? 신생아가 태어나면 아기수첩을 받게 됩니다.
+              이 수첩에는 예방접종 기록과 아기의 키, 몸무게 등 성장 관련 수치를
+              기록합니다. 하지만 이 모든 것이 수기로 작성되어, 소중한 기록들이
+              분실되거나 훼손될 위험이 높습니다.
             </p>
-            <div className="mt-4 p-4 bg-gray-50 rounded-lg">
-              <p className="font-bold">주요 기술 스택:</p>
-              <p>Next.js, TypeScript, Node.js, AWS (EC2, RDS, S3), MySQL</p>
+
+            <div className="space-y-4">
+              <div className="p-4 bg-blue-50 rounded-lg">
+                <p className="font-semibold text-blue-800">프로젝트 이름</p>
+                <p className="text-lg font-bold">꼬물꼬물, 디지털 아기수첩</p>
+              </div>
+
+              <div className="p-4 bg-green-50 rounded-lg">
+                <p className="font-semibold text-green-800">개발 환경</p>
+                <p>
+                  <b>FrontEnd:</b> React.js, TypeScript, Tailwind CSS, Sass,
+                  Redux, Figma
+                </p>
+                <p>
+                  <b>BackEnd:</b> Node.js, Heroku
+                </p>
+                <p>
+                  <b>Database:</b> MySQL
+                </p>
+                <p>
+                  <b>팀 구성:</b> 디자인+퍼블리싱(1명), 프론트엔드+백엔드(2명)
+                </p>
+              </div>
+
+              <div className="p-4 bg-yellow-50 rounded-lg">
+                <p className="font-semibold text-yellow-800">프로젝트 목적</p>
+                <p>
+                  아기의 첫시작이 담긴 아기수첩, 데이터의 디지털화를 통해
+                  안전하게 보관하고 누적된 데이터를 보기쉽게 시각화하여
+                  아기기록을 쉽게 관리합니다.
+                </p>
+              </div>
             </div>
           </>
         );
@@ -34,45 +74,219 @@ const BabynoteContent: React.FC = () => {
         return (
           <>
             <h4 className="text-xl font-semibold mt-0 mb-3 text-gray-800 dark:text-gray-200">
-              ⚙️ 기술 및 인프라 (2/3)
+              주요 기능
             </h4>
-            <ul className="list-disc list-inside space-y-2 ml-4">
-              <li>
-                **Full-Stack 개발:** Next.js (FE), Node.js (BE)를 사용하여
-                서비스 전반을 구축하고 배포했습니다.
-              </li>
-              <li>
-                **보안 및 인증:** **JWT** 기반 토큰 인증 시스템을 구현하여 REST
-                API 통신의 보안을 강화했습니다.
-              </li>
-              <li>
-                **인프라 구축:** **AWS (EC2, RDS, S3)**를 활용하여 안정적인 서버
-                환경을 구성하고 **Nginx**를 이용한 리버스 프록시 및 로드 밸런싱
-                설정을 담당했습니다.
-              </li>
-            </ul>
+            <div className="space-y-4">
+              <div className="p-4 bg-blue-50 rounded-lg">
+                <h5 className="font-semibold text-blue-800">
+                  1. 로그인/회원가입/로그아웃
+                </h5>
+                <ul className="list-disc pl-5 space-y-2 mt-2">
+                  <li>node.js, mysql, kakaoAPI 연동</li>
+                  <li>유효성 검사 및 아이디 중복체크</li>
+                  <li>세션 기반 인증 처리</li>
+                </ul>
+              </div>
+
+              <div className="p-4 bg-green-50 rounded-lg">
+                <h5 className="font-semibold text-green-800">
+                  2. 아이 정보 관리
+                </h5>
+                <ul className="list-disc pl-5 space-y-2 mt-2">
+                  <li>아이 정보 CRUD 기능</li>
+                  <li>프로필 이미지 업로드 및 관리</li>
+                  <li>성장 기록 시각화</li>
+                </ul>
+              </div>
+
+              <div className="p-4 bg-yellow-50 rounded-lg">
+                <h5 className="font-semibold text-yellow-800">
+                  3. 예방접종 관리
+                </h5>
+                <ul className="list-disc pl-5 space-y-2 mt-2">
+                  <li>예방접종 일정 및 이력 관리</li>
+                  <li>접종 상태별 필터링 (접종완료/진행중/미접종)</li>
+                  <li>실시간 DB 연동</li>
+                </ul>
+              </div>
+            </div>
           </>
         );
       case 3:
         return (
           <>
             <h4 className="text-xl font-semibold mt-0 mb-3 text-gray-800 dark:text-gray-200">
-              🎯 핵심 기능 구현 (3/3)
+              기술 스택
             </h4>
-            <ul className="list-disc list-inside space-y-2 ml-4">
-              <li>
-                **맞춤형 영양제 추천 시스템:** 사용자 설문 결과를 기반으로 약사
-                추천 로직을 구현하고 추천 결과를 시각적으로 제공.
-              </li>
-              <li>
-                **약국 방문 예약 기능:** 사용자가 원하는 약국과 시간을 선택하고
-                예약하는 기능을 구현.
-              </li>
-              <li>
-                **약사/사용자 인증 분리:** 권한을 분리하여 안전한 데이터 접근 및
-                서비스 이용 환경 구축.
-              </li>
-            </ul>
+            <div className="space-y-4">
+              <div className="p-4 bg-blue-50 rounded-lg">
+                <h5 className="font-semibold text-blue-800">FrontEnd</h5>
+                <p>
+                  React.js, TypeScript, Tailwind CSS, Sass, Redux, Figma,
+                  Netlify
+                </p>
+              </div>
+
+              <div className="p-4 bg-green-50 rounded-lg">
+                <h5 className="font-semibold text-green-800">BackEnd</h5>
+                <p>Node.js, Express, Heroku</p>
+              </div>
+
+              <div className="p-4 bg-yellow-50 rounded-lg">
+                <h5 className="font-semibold text-yellow-800">Database</h5>
+                <p>MySQL, AWS RDS</p>
+              </div>
+
+              <div className="p-4 bg-purple-50 rounded-lg">
+                <h5 className="font-semibold text-purple-800">
+                  주요 라이브러리
+                </h5>
+                <p>Axios, React Router, Redux Toolkit, Chart.js</p>
+              </div>
+            </div>
+          </>
+        );
+      case 4:
+        return (
+          <>
+            <h4 className="text-xl font-semibold mt-0 mb-3 text-gray-800 dark:text-gray-200">
+              트러블 슈팅
+            </h4>
+            <div className="space-y-6">
+              <div className="p-4 bg-red-50 rounded-lg">
+                <h5 className="font-semibold text-red-800">
+                  1. 비동기 상태 업데이트 문제
+                </h5>
+                <p className="font-medium">문제 상황:</p>
+                <p>
+                  삭제 버튼을 한 번 클릭해도 삭제되지 않고, 두 번 클릭해야
+                  삭제되는 현상
+                </p>
+                <p className="font-medium mt-2">원인:</p>
+                <p>
+                  setState()의 비동기적 특성으로 인해 상태 업데이트가 즉시
+                  반영되지 않음
+                </p>
+                <p className="font-medium mt-2">해결:</p>
+                <pre className="bg-gray-100 p-2 rounded text-sm mt-2 overflow-x-auto">
+                  {`// 수정 전
+setGrowId(Number(e.currentTarget.value));
+const response = await axios.post(/* ... */);
+
+// 수정 후
+const selectedGrowId = Number(e.currentTarget.value);
+const response = await axios.post(
+  'http://localhost:5001/api/delgrow',
+  { growId: selectedGrowId } // 즉시 반영된 값 사용
+);`}
+                </pre>
+              </div>
+
+              <div className="p-4 bg-blue-50 rounded-lg">
+                <h5 className="font-semibold text-blue-800">
+                  2. 이메일 유효성 검사 문제
+                </h5>
+                <p className="font-medium">문제 상황:</p>
+                <p>
+                  이메일 형식이 아님에도 중복체크시 사용가능한 이메일로 처리
+                </p>
+                <p className="font-medium mt-2">원인:</p>
+                <p>카카오 로그인과 일반 이메일 로그인 분기 처리 누락</p>
+                <p className="font-medium mt-2">해결:</p>
+                <pre className="bg-gray-100 p-2 rounded text-sm mt-2 overflow-x-auto">
+                  {`const emailCheck = async (e: React.FormEvent) => {
+  e.preventDefault();
+  if (!formData.email.includes("@")) {
+    setMessages((prev) => ({
+      ...prev,
+      email: "유효하지 않은 이메일 주소입니다!",
+    }));
+    return;
+  }
+  // ... 나머지 로직
+};`}
+                </pre>
+              </div>
+            </div>
+          </>
+        );
+      case 5:
+        return (
+          <>
+            <h4 className="text-xl font-semibold mt-0 mb-3 text-gray-800 dark:text-gray-200">
+              성과 및 배운 점
+            </h4>
+            <div className="space-y-4">
+              <div className="p-4 bg-green-50 rounded-lg">
+                <h5 className="font-semibold text-green-800">주요 성과</h5>
+                <ul className="list-disc pl-5 space-y-2 mt-2">
+                  <li>
+                    React와 Node.js를 활용한 풀스택 웹 애플리케이션 개발 경험
+                  </li>
+                  <li>
+                    Redux를 활용한 전역 상태 관리로 컴포넌트 간 데이터 흐름
+                    최적화
+                  </li>
+                  <li>RESTful API 설계 및 구현을 통한 백엔드 개발 경험</li>
+                  <li>Netlify와 Heroku를 활용한 클라우드 배포 경험</li>
+                </ul>
+              </div>
+
+              <div className="p-4 bg-blue-50 rounded-lg">
+                <h5 className="font-semibold text-blue-800">배운 점</h5>
+                <ul className="list-disc pl-5 space-y-2 mt-2">
+                  <li>React의 비동기 상태 관리에 대한 이해도 향상</li>
+                  <li>TypeScript를 활용한 타입 안전성 확보</li>
+                  <li>REST API 설계 및 구현 방법</li>
+                  <li>데이터베이스 설계 및 최적화 기법</li>
+                  <li>팀 협업을 통한 버전 관리 및 이슈 트래킹</li>
+                </ul>
+              </div>
+            </div>
+          </>
+        );
+      case 6:
+        return (
+          <>
+            <h4 className="text-xl font-semibold mt-0 mb-3 text-gray-800 dark:text-gray-200">
+              프로젝트 미리보기
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="border rounded-lg overflow-hidden">
+                <img
+                  src="/babynote/1.png"
+                  alt="메인 화면"
+                  className="w-full h-auto"
+                />
+                <p className="p-2 text-sm text-center bg-gray-50">메인 화면</p>
+              </div>
+              <div className="border rounded-lg overflow-hidden">
+                <img
+                  src="/babynote/2.png"
+                  alt="성장 기록"
+                  className="w-full h-auto"
+                />
+                <p className="p-2 text-sm text-center bg-gray-50">성장 기록</p>
+              </div>
+              <div className="border rounded-lg overflow-hidden">
+                <img
+                  src="/babynote/3.png"
+                  alt="예방접종 관리"
+                  className="w-full h-auto"
+                />
+                <p className="p-2 text-sm text-center bg-gray-50">
+                  예방접종 관리
+                </p>
+              </div>
+              <div className="border rounded-lg overflow-hidden">
+                <img
+                  src="/babynote/4.png"
+                  alt="마이페이지"
+                  className="w-full h-auto"
+                />
+                <p className="p-2 text-sm text-center bg-gray-50">마이페이지</p>
+              </div>
+            </div>
           </>
         );
       default:
@@ -82,17 +296,14 @@ const BabynoteContent: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white border-b pb-2">
-        💊 바로한포: 약사 추천 영양제 서비스 상세
-      </h3>
-
-      <div className="min-h-[300px] p-4 border rounded-lg bg-white dark:bg-gray-800 transition-opacity duration-300">
+      <div
+        ref={contentRef}
+        className="min-h-[300px] max-h-[60vh] overflow-y-auto p-4 border rounded-lg bg-white dark:bg-gray-800 transition-opacity duration-300"
+      >
         {renderContent()}
       </div>
 
-      {/* 페이지네이션 컨트롤 */}
       <div className="flex justify-between items-center pt-4">
-        {/* 이전 버튼 */}
         <button
           onClick={goToPrev}
           disabled={step === 1}
@@ -101,12 +312,10 @@ const BabynoteContent: React.FC = () => {
           <ChevronLeft className="w-4 h-4" /> 이전
         </button>
 
-        {/* 페이지 표시 */}
         <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
-          페이지 {step} / {totalSteps}
+          {step} / {totalSteps}
         </span>
 
-        {/* 다음 버튼 */}
         <button
           onClick={goToNext}
           disabled={step === totalSteps}

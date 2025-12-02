@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react"; // 페이지 넘기기
 
 const BarohanpoContent: React.FC = () => {
   const [step, setStep] = useState(1);
-  const totalSteps = 3; // 프로젝트 상세 내용을 3개의 페이지로 나눈다고 가정
+  const totalSteps = 1; // 프로젝트 상세 내용을 3개의 페이지로 나눈다고 가정
 
   const goToNext = () => setStep((prev) => Math.min(prev + 1, totalSteps));
   const goToPrev = () => setStep((prev) => Math.max(prev - 1, 1));
@@ -16,65 +16,20 @@ const BarohanpoContent: React.FC = () => {
         return (
           <>
             <h4 className="text-xl font-semibold mt-0 mb-3 text-gray-800 dark:text-gray-200">
-              🔍 프로젝트 개요 (1/3)
+              프로젝트 개요 (1/3)
             </h4>
             <p className="text-lg">
-              **바로한포**는 사용자의 건강 정보 및 라이프스타일을 분석하여
-              **약사가 직접 영양제를 추천**해주고, **약국 방문 예약**까지 가능한
-              헬스케어 웹 서비스입니다. Next.js와 TypeScript 기반의 안정적인
-              환경에서 사용자 경험 최적화에 중점을 두어 개발되었습니다.
+              해당프로젝트 상세 내용 작성 진행 중입니다. 현재 어플리케이션
+              배포는 중지 되어있으며, 웹 모바일 환경으로 이용 가능합니다.
             </p>
             <div className="mt-4 p-4 bg-gray-50 rounded-lg">
-              <p className="font-bold">주요 기술 스택:</p>
-              <p>Next.js, TypeScript, Node.js, AWS (EC2, RDS, S3), MySQL</p>
+              <p>
+                <b>팀원:</b> 기획(2명) , UI/UX(1명), <b>개발(1명)</b>
+              </p>
             </div>
           </>
         );
-      case 2:
-        return (
-          <>
-            <h4 className="text-xl font-semibold mt-0 mb-3 text-gray-800 dark:text-gray-200">
-              ⚙️ 기술 및 인프라 (2/3)
-            </h4>
-            <ul className="list-disc list-inside space-y-2 ml-4">
-              <li>
-                **Full-Stack 개발:** Next.js (FE), Node.js (BE)를 사용하여
-                서비스 전반을 구축하고 배포했습니다.
-              </li>
-              <li>
-                **보안 및 인증:** **JWT** 기반 토큰 인증 시스템을 구현하여 REST
-                API 통신의 보안을 강화했습니다.
-              </li>
-              <li>
-                **인프라 구축:** **AWS (EC2, RDS, S3)**를 활용하여 안정적인 서버
-                환경을 구성하고 **Nginx**를 이용한 리버스 프록시 및 로드 밸런싱
-                설정을 담당했습니다.
-              </li>
-            </ul>
-          </>
-        );
-      case 3:
-        return (
-          <>
-            <h4 className="text-xl font-semibold mt-0 mb-3 text-gray-800 dark:text-gray-200">
-              🎯 핵심 기능 구현 (3/3)
-            </h4>
-            <ul className="list-disc list-inside space-y-2 ml-4">
-              <li>
-                **맞춤형 영양제 추천 시스템:** 사용자 설문 결과를 기반으로 약사
-                추천 로직을 구현하고 추천 결과를 시각적으로 제공.
-              </li>
-              <li>
-                **약국 방문 예약 기능:** 사용자가 원하는 약국과 시간을 선택하고
-                예약하는 기능을 구현.
-              </li>
-              <li>
-                **약사/사용자 인증 분리:** 권한을 분리하여 안전한 데이터 접근 및
-                서비스 이용 환경 구축.
-              </li>
-            </ul>
-          </>
-        );
+
       default:
         return null;
     }

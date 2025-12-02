@@ -21,7 +21,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     title: "바로한포",
-    period: "2025.07.15 - 2025.09.17",
+    period: "2025.07.15 - 2025.10.17",
     description: "약사가 추천해주는 영양제, 약국 방문 예약 서비스",
     tech: [
       "Next.js",
