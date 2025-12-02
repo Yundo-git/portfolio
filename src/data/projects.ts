@@ -1,7 +1,12 @@
+import BarohanpoContent from "@/components/project-modals/Barohanpo";
+import BabynoteContent from "@/components/project-modals/Babynote";
+import SeoulContent from "@/components/project-modals/Seoul"; // 파일명에 맞게 수정
+
 export interface ProjectLink {
   demo?: string;
   github?: string;
 }
+export type ProjectContentComponent = React.FC;
 
 export interface Project {
   title: string;
@@ -10,6 +15,7 @@ export interface Project {
   tech: string[];
   features: string[];
   links: ProjectLink;
+  ContentComponent: ProjectContentComponent;
 }
 
 export const projects: Project[] = [
@@ -43,6 +49,7 @@ export const projects: Project[] = [
       demo: "https://app.barohanpo.xyz/",
       github: "https://github.com/Yundo-git/barohanpo_Fe.git",
     },
+    ContentComponent: BarohanpoContent,
   },
   {
     title: "꼬물꼬물 | 디지털 아기수첩",
@@ -61,6 +68,7 @@ export const projects: Project[] = [
       demo: "https://babynote.netlify.app/",
       github: "https://github.com/SeSAC-refactoring/cutebaby.git",
     },
+    ContentComponent: BabynoteContent,
   },
   {
     title: "서울서울 (seoulseoul)",
@@ -84,5 +92,6 @@ export const projects: Project[] = [
       demo: "https://seoulseoul.netlify.app/",
       github: "https://github.com/sesacCteam/sesacCteam",
     },
+    ContentComponent: SeoulContent,
   },
 ];
