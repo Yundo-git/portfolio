@@ -38,7 +38,7 @@ const BarohanpoContent: React.FC = () => {
   return (
     <div className="space-y-6">
       <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white border-b pb-2">
-        💊 바로한포: 약사 추천 영양제 서비스 상세
+        바로한포: 약사 추천 영양제 서비스 상세
       </h3>
 
       <div className="min-h-[300px] p-4 border rounded-lg bg-white dark:bg-gray-800 transition-opacity duration-300">
