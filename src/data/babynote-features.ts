@@ -59,7 +59,7 @@ export const babynoteFeatures: ProjectFeature[] = [
       "접종 이력 관리 모달",
       "실시간 데이터 동기화",
     ],
-    images: ["5.png", "6.png"],
+    images: ["5.png", "6.png", "7.png"],
   },
   {
     title: "기술 스택 및 배포",
@@ -70,6 +70,6 @@ export const babynoteFeatures: ProjectFeature[] = [
       "배포: Netlify (프론트엔드), Heroku (백엔드)",
       "반응형 웹 디자인 (SCSS + Tailwind CSS)",
     ],
-    images: ["7.png", "8.png", "9.png", "10.png", "11-1.png", "11-2.png"],
+    images: ["8.png", "9.png", "10.png", "11-1.png", "11-2.png"],
   },
 ];
