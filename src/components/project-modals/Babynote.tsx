@@ -1,6 +1,7 @@
 // Babynote.tsx
 import React, { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { babynoteFeatures } from "@/data/babynote-features";
 
 const BabynoteContent: React.FC = () => {
   const [step, setStep] = useState(1);
@@ -20,6 +21,36 @@ const BabynoteContent: React.FC = () => {
 
   const goToNext = () => setStep((prev) => Math.min(prev + 1, totalSteps));
   const goToPrev = () => setStep((prev) => Math.max(prev - 1, 1));
+
+  const [selectedFeature, setSelectedFeature] = useState<number>(-1);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const openImageModal = (featureIndex: number, imageIndex = 0) => {
+    setSelectedFeature(featureIndex);
+    setCurrentImageIndex(imageIndex);
+  };
+
+  const closeImageModal = () => {
+    setSelectedFeature(-1);
+  };
+
+  const navigateImages = (direction: "prev" | "next") => {
+    if (selectedFeature === -1) return;
+
+    const currentFeature = projectFeatures[selectedFeature];
+    setCurrentImageIndex((prev) => {
+      if (direction === "next") {
+        return (prev + 1) % currentFeature.images.length;
+      } else {
+        return (
+          (prev - 1 + currentFeature.images.length) %
+          currentFeature.images.length
+        );
+      }
+    });
+  };
+
+  const projectFeatures = babynoteFeatures;
 
   const renderContent = () => {
     switch (step) {
@@ -248,47 +279,81 @@ const response = await axios.post(
         );
       case 6:
         return (
-          <>
-            <h4 className="text-xl font-semibold mt-0 mb-3 text-gray-800 dark:text-gray-200">
-              프로젝트 미리보기(사진캡처 진행중입니다.)
+          <div className="py-4 space-y-8">
+            <h4 className="text-2xl font-bold text-center text-gray-800 dark:text-gray-200 mb-8">
+              프로젝트 상세 기능
             </h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="border rounded-lg overflow-hidden">
-                <img
-                  src="/babynote/1.png"
-                  alt="메인 화면"
-                  className="w-full h-auto"
-                />
-                <p className="p-2 text-sm text-center bg-gray-50">메인 화면</p>
-              </div>
-              <div className="border rounded-lg overflow-hidden">
-                <img
-                  src="/babynote/2.png"
-                  alt="성장 기록"
-                  className="w-full h-auto"
-                />
-                <p className="p-2 text-sm text-center bg-gray-50">성장 기록</p>
-              </div>
-              <div className="border rounded-lg overflow-hidden">
-                <img
-                  src="/babynote/3.png"
-                  alt="예방접종 관리"
-                  className="w-full h-auto"
-                />
-                <p className="p-2 text-sm text-center bg-gray-50">
-                  예방접종 관리
+
+            {projectFeatures.map((feature, index) => (
+              <div key={index} className="mb-12">
+                <h5 className="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-3">
+                  {feature.title}
+                </h5>
+                <p className="text-gray-700 dark:text-gray-300 mb-4">
+                  {feature.description}
                 </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                  <div className="md:col-span-2 space-y-4">
+                    <ul className="list-disc pl-5 space-y-2 text-gray-600 dark:text-gray-400">
+                      {feature.details.map((detail, i) => (
+                        <li key={i} className="leading-relaxed">
+                          {detail}
+                        </li>
+                      ))}
+                    </ul>
+                    {feature.images.length > 1 && (
+                      <button
+                        onClick={() => openImageModal(index)}
+                        className="text-sm text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 flex items-center"
+                      >
+                        <span>
+                          더 많은 이미지 보기 ({feature.images.length})
+                        </span>
+                        <ChevronRight className="w-4 h-4 ml-1" />
+                      </button>
+                    )}
+                  </div>
+
+                  <div className="relative group">
+                    <div
+                      className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
+                      onClick={() => openImageModal(index, 0)}
+                    >
+                      <img
+                        src={`/babynote/${feature.images[0]}`}
+                        alt={`${feature.title} 대표 이미지`}
+                        className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300 flex items-center justify-center">
+                        <div className="bg-black bg-opacity-50 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-6 w-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {index < projectFeatures.length - 1 && (
+                  <div className="border-t border-gray-200 dark:border-gray-700 my-6"></div>
+                )}
               </div>
-              <div className="border rounded-lg overflow-hidden">
-                <img
-                  src="/babynote/4.png"
-                  alt="마이페이지"
-                  className="w-full h-auto"
-                />
-                <p className="p-2 text-sm text-center bg-gray-50">마이페이지</p>
-              </div>
-            </div>
-          </>
+            ))}
+          </div>
         );
       default:
         return null;
@@ -296,36 +361,126 @@ const response = await axios.post(
   };
 
   return (
-    <div className="space-y-6">
-      <div
-        ref={contentRef}
-        className="min-h-[300px] max-h-[60vh] overflow-y-auto p-4 border rounded-lg bg-white dark:bg-gray-800 transition-opacity duration-300"
-      >
-        {renderContent()}
+    <>
+      <div className="space-y-6">
+        <div
+          ref={contentRef}
+          className="min-h-[300px] max-h-[60vh] overflow-y-auto p-4 border rounded-lg bg-white dark:bg-gray-800 transition-opacity duration-300"
+        >
+          {renderContent()}
+        </div>
+
+        <div className="flex justify-between items-center pt-4">
+          <button
+            onClick={goToPrev}
+            disabled={step === 1}
+            className="flex items-center gap-1 px-4 py-2 text-sm font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed bg-gray-100 hover:bg-gray-200 text-gray-800 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white"
+          >
+            <ChevronLeft className="w-4 h-4" /> 이전
+          </button>
+
+          <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+            {step} / {totalSteps}
+          </span>
+
+          <button
+            onClick={goToNext}
+            disabled={step === totalSteps}
+            className="flex items-center gap-1 px-4 py-2 text-sm font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed bg-blue-500 hover:bg-blue-600 text-white dark:bg-blue-600 dark:hover:bg-blue-700"
+          >
+            다음 <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
       </div>
 
-      <div className="flex justify-between items-center pt-4">
-        <button
-          onClick={goToPrev}
-          disabled={step === 1}
-          className="flex items-center gap-1 px-4 py-2 text-sm font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed bg-gray-100 hover:bg-gray-200 text-gray-800 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white"
+      {/* Image Modal */}
+      {selectedFeature >= 0 && selectedFeature < projectFeatures.length && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
+          onClick={closeImageModal}
         >
-          <ChevronLeft className="w-4 h-4" /> 이전
-        </button>
+          <div
+            className="relative max-w-4xl w-full max-h-[90vh]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={closeImageModal}
+              className="absolute -top-10 right-0 text-white hover:text-gray-300"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-8 w-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
 
-        <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
-          {step} / {totalSteps}
-        </span>
+            <div className="relative">
+              <img
+                src={`/babynote/${projectFeatures[selectedFeature]?.images[currentImageIndex]}`}
+                alt={`${projectFeatures[selectedFeature]?.title} 이미지 ${
+                  currentImageIndex + 1
+                }`}
+                className="max-w-full max-h-[80vh] mx-auto rounded-lg shadow-2xl"
+              />
 
-        <button
-          onClick={goToNext}
-          disabled={step === totalSteps}
-          className="flex items-center gap-1 px-4 py-2 text-sm font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed bg-gray-blue-500 hover:bg-gray-200 text-gray-800 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white"
-        >
-          다음 <ChevronRight className="w-4 h-4" />
-        </button>
-      </div>
-    </div>
+              {projectFeatures[selectedFeature]?.images.length > 1 && (
+                <>
+                  <button
+                    onClick={(e: React.MouseEvent) => {
+                      e.stopPropagation();
+                      navigateImages("prev");
+                    }}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-75 transition-all"
+                    aria-label="이전 이미지"
+                  >
+                    <ChevronLeft className="h-6 w-6" />
+                  </button>
+                  <button
+                    onClick={(e: React.MouseEvent) => {
+                      e.stopPropagation();
+                      navigateImages("next");
+                    }}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-75 transition-all"
+                    aria-label="다음 이미지"
+                  >
+                    <ChevronRight className="h-6 w-6" />
+                  </button>
+
+                  <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
+                    {projectFeatures[selectedFeature]?.images.map(
+                      (_: unknown, idx: number) => (
+                        <button
+                          key={idx}
+                          onClick={(e: React.MouseEvent) => {
+                            e.stopPropagation();
+                            setCurrentImageIndex(idx);
+                          }}
+                          className={`h-2 w-2 rounded-full transition-all ${
+                            idx === currentImageIndex
+                              ? "bg-white w-6"
+                              : "bg-white bg-opacity-50"
+                          }`}
+                          aria-label={`이미지 ${idx + 1}로 이동`}
+                        />
+                      )
+                    )}
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
