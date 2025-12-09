@@ -26,6 +26,11 @@ const BarohanpoContent: React.FC = () => {
               <p>
                 <b>팀원:</b> 기획(2명) , UI/UX(1명), <b>개발(1명)</b>
               </p>
+              <img
+                src="/barohanpo/1.png"
+                alt="서비스 구성도"
+                className="mt-2 rounded-lg max-w-full h-auto"
+              />
             </div>
           </>
         );
