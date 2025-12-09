@@ -36,12 +36,12 @@ const SeoulContent: React.FC = () => {
             </p>
 
             <div className="space-y-4">
-              <div className="p-4 bg-blue-50 rounded-lg">
+              <div className="p-4  rounded-lg">
                 <p className="font-semibold text-blue-800">프로젝트 이름</p>
                 <p className="text-lg font-bold">서울서울 (SeoulSeoul)</p>
               </div>
 
-              <div className="p-4 bg-green-50 rounded-lg">
+              <div className="p-4  rounded-lg">
                 <p className="font-semibold text-green-800">개발 환경</p>
                 <p>
                   <b>FrontEnd:</b> JavaScript, HTML5, CSS3, Bootstrap
@@ -57,7 +57,7 @@ const SeoulContent: React.FC = () => {
                 </p>
               </div>
 
-              <div className="p-4 bg-yellow-50 rounded-lg">
+              <div className="p-4  rounded-lg">
                 <p className="font-semibold text-yellow-800">프로젝트 목적</p>
                 <p>
                   서울을 방문하는 관광객들이 주요 관광지, 날씨, 교통 정보를 한
@@ -75,7 +75,7 @@ const SeoulContent: React.FC = () => {
               주요 기능
             </h4>
             <div className="space-y-4">
-              <div className="p-4 bg-blue-50 rounded-lg">
+              <div className="p-4  rounded-lg">
                 <h5 className="font-semibold text-blue-800">1. 관광지 정보</h5>
                 <ul className="list-disc pl-5 space-y-2 mt-2">
                   <li>카카오 맵 API를 활용한 관광지 검색</li>
@@ -84,7 +84,7 @@ const SeoulContent: React.FC = () => {
                 </ul>
               </div>
 
-              <div className="p-4 bg-green-50 rounded-lg">
+              <div className="p-4  rounded-lg">
                 <h5 className="font-semibold text-green-800">2. 날씨 정보</h5>
                 <ul className="list-disc pl-5 space-y-2 mt-2">
                   <li>실시간 날씨 정보 제공</li>
@@ -101,17 +101,17 @@ const SeoulContent: React.FC = () => {
               기술 스택
             </h4>
             <div className="space-y-4">
-              <div className="p-4 bg-blue-50 rounded-lg">
+              <div className="p-4  rounded-lg">
                 <h5 className="font-semibold text-blue-800">FrontEnd</h5>
                 <p>JavaScript, HTML5, CSS3, Bootstrap</p>
               </div>
 
-              <div className="p-4 bg-green-50 rounded-lg">
+              <div className="p-4  rounded-lg">
                 <h5 className="font-semibold text-green-800">API</h5>
                 <p>카카오 맵 API, 공공데이터 포털 OpenAPI</p>
               </div>
 
-              <div className="p-4 bg-yellow-50 rounded-lg">
+              <div className="p-4  rounded-lg">
                 <h5 className="font-semibold text-yellow-800">Tools</h5>
                 <p>Figma, GitHub, Visual Studio Code</p>
               </div>
@@ -125,7 +125,7 @@ const SeoulContent: React.FC = () => {
               트러블 슈팅
             </h4>
             <div className="space-y-6">
-              <div className="p-4 bg-red-50 rounded-lg">
+              <div className="p-4  rounded-lg">
                 <h5 className="font-semibold text-red-800">
                   1. 카카오 맵 API 연동 문제
                 </h5>
@@ -161,7 +161,7 @@ useEffect(() => {
                 </pre>
               </div>
 
-              <div className="p-4 bg-blue-50 rounded-lg">
+              <div className="p-4  rounded-lg">
                 <h5 className="font-semibold text-blue-800">
                   2. 반응형 디자인 이슈
                 </h5>

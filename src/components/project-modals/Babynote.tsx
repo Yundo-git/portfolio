@@ -68,13 +68,13 @@ const BabynoteContent: React.FC = () => {
             </p>
 
             <div className="space-y-4">
-              <div className="p-4 bg-blue-50 rounded-lg">
+              <div className="p-4 rounded-lg">
                 <p className="font-semibold text-blue-800">프로젝트 이름</p>
                 <p className="text-lg font-bold">꼬물꼬물, 디지털 아기수첩</p>
                 <p className="text-sm">현재 백엔드 배포 중지 상태입니다.</p>
               </div>
 
-              <div className="p-4 bg-green-50 rounded-lg">
+              <div className="p-4 rounded-lg">
                 <p className="font-semibold text-green-800">개발 환경</p>
                 <p>
                   <b>FrontEnd:</b> React.js, TypeScript, Tailwind CSS, Sass,
@@ -91,7 +91,7 @@ const BabynoteContent: React.FC = () => {
                 </p>
               </div>
 
-              <div className="p-4 bg-yellow-50 rounded-lg">
+              <div className="p-4 rounded-lg">
                 <p className="font-semibold text-yellow-800">프로젝트 목적</p>
                 <p>
                   아기의 첫시작이 담긴 아기수첩, 데이터의 디지털화를 통해
@@ -109,7 +109,7 @@ const BabynoteContent: React.FC = () => {
               주요 기능
             </h4>
             <div className="space-y-4">
-              <div className="p-4 bg-blue-50 rounded-lg">
+              <div className="p-4 rounded-lg">
                 <h5 className="font-semibold text-blue-800">
                   1. 로그인/회원가입/로그아웃
                 </h5>
@@ -120,7 +120,7 @@ const BabynoteContent: React.FC = () => {
                 </ul>
               </div>
 
-              <div className="p-4 bg-green-50 rounded-lg">
+              <div className="p-4 rounded-lg">
                 <h5 className="font-semibold text-green-800">
                   2. 아이 정보 관리
                 </h5>
@@ -131,7 +131,7 @@ const BabynoteContent: React.FC = () => {
                 </ul>
               </div>
 
-              <div className="p-4 bg-yellow-50 rounded-lg">
+              <div className="p-4    rounded-lg">
                 <h5 className="font-semibold text-yellow-800">
                   3. 예방접종 관리
                 </h5>
@@ -151,7 +151,7 @@ const BabynoteContent: React.FC = () => {
               기술 스택
             </h4>
             <div className="space-y-4">
-              <div className="p-4 bg-blue-50 rounded-lg">
+              <div className="p-4  rounded-lg">
                 <h5 className="font-semibold text-blue-800">FrontEnd</h5>
                 <p>
                   React.js, TypeScript, Tailwind CSS, Sass, Redux, Figma,
@@ -159,17 +159,17 @@ const BabynoteContent: React.FC = () => {
                 </p>
               </div>
 
-              <div className="p-4 bg-green-50 rounded-lg">
+              <div className="p-4 rounded-lg">
                 <h5 className="font-semibold text-green-800">BackEnd</h5>
                 <p>Node.js, Express, Heroku</p>
               </div>
 
-              <div className="p-4 bg-yellow-50 rounded-lg">
+              <div className="p-4 rounded-lg">
                 <h5 className="font-semibold text-yellow-800">Database</h5>
                 <p>MySQL, AWS RDS</p>
               </div>
 
-              <div className="p-4 bg-purple-50 rounded-lg">
+              <div className="p-4  rounded-lg">
                 <h5 className="font-semibold text-purple-800">
                   주요 라이브러리
                 </h5>
@@ -185,7 +185,7 @@ const BabynoteContent: React.FC = () => {
               트러블 슈팅
             </h4>
             <div className="space-y-6">
-              <div className="p-4 bg-red-50 rounded-lg">
+              <div className="p-4  rounded-lg">
                 <h5 className="font-semibold text-red-800">
                   1. 비동기 상태 업데이트 문제
                 </h5>
@@ -214,7 +214,7 @@ const response = await axios.post(
                 </pre>
               </div>
 
-              <div className="p-4 bg-blue-50 rounded-lg">
+              <div className="p-4 rounded-lg">
                 <h5 className="font-semibold text-blue-800">
                   2. 이메일 유효성 검사 문제
                 </h5>
@@ -249,7 +249,7 @@ const response = await axios.post(
               성과 및 배운 점
             </h4>
             <div className="space-y-4">
-              <div className="p-4 bg-green-50 rounded-lg">
+              <div className="p-4  rounded-lg">
                 <h5 className="font-semibold text-green-800">주요 성과</h5>
                 <ul className="list-disc pl-5 space-y-2 mt-2">
                   <li>
@@ -264,7 +264,7 @@ const response = await axios.post(
                 </ul>
               </div>
 
-              <div className="p-4 bg-blue-50 rounded-lg">
+              <div className="p-4  rounded-lg">
                 <h5 className="font-semibold text-blue-800">배운 점</h5>
                 <ul className="list-disc pl-5 space-y-2 mt-2">
                   <li>React의 비동기 상태 관리에 대한 이해도 향상</li>
