@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react"; // 페이지 넘기기
 
 const BarohanpoContent: React.FC = () => {
   const [step, setStep] = useState(1);
-  const totalSteps = 1; // 프로젝트 상세 내용을 3개의 페이지로 나눈다고 가정
+  const totalSteps = 2; // 프로젝트 상세 내용을 3개의 페이지로 나눈다고 가정
 
   const goToNext = () => setStep((prev) => Math.min(prev + 1, totalSteps));
   const goToPrev = () => setStep((prev) => Math.max(prev - 1, 1));
@@ -32,6 +32,27 @@ const BarohanpoContent: React.FC = () => {
                 alt="서비스 구성도"
                 className="mt-2 rounded-lg max-w-full h-auto"
               />
+            </div>
+          </>
+        );
+      case 2:
+        return (
+          <>
+            <h4 className="text-xl font-semibold mt-0 mb-3 text-gray-800 dark:text-gray-200">
+              서비스 시연 영상 (2/3)
+            </h4>
+            <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+              <video
+                className="w-[50vw] h-[50vh] max-w-2xl mx-auto rounded-lg shadow-md"
+                controls
+                controlsList="nodownload"
+                playsInline
+                preload="metadata"
+                poster="/barohanpo/2.png"
+              >
+                <source src="/barohanpo/barohanpo.mov" type="video/mp4" />
+                귀하의 브라우저는 비디오 태그를 지원하지 않습니다.
+              </video>
             </div>
           </>
         );

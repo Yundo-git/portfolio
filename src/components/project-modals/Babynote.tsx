@@ -5,7 +5,7 @@ import { babynoteFeatures } from "@/data/babynote-features";
 
 const BabynoteContent: React.FC = () => {
   const [step, setStep] = useState(1);
-  const totalSteps = 6;
+  const totalSteps = 7;
   const contentRef = useRef<HTMLDivElement>(null);
 
   // 스크롤을 맨 위로 올리는 함수
@@ -106,6 +106,39 @@ const BabynoteContent: React.FC = () => {
         return (
           <>
             <h4 className="text-xl font-semibold mt-0 mb-3 text-gray-800 dark:text-gray-200">
+              서비스 시연 영상
+            </h4>
+            <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+              <video
+                className="w-[50vw] h-[50vh] max-w-2xl mx-auto rounded-lg shadow-md"
+                controls
+                controlsList="nodownload"
+                playsInline
+                preload="metadata"
+                poster="/babynote/12.png"
+              >
+                <source src="/babynote/홈페이지.mp4" type="video/mp4" />
+                귀하의 브라우저는 비디오 태그를 지원하지 않습니다.
+              </video>
+
+              <video
+                className="w-[50vw] h-[50vh] max-w-2xl mx-auto rounded-lg shadow-md"
+                controls
+                controlsList="nodownload"
+                playsInline
+                preload="metadata"
+                poster="/babynote/12.png"
+              >
+                <source src="/babynote/my.mov" type="video/mp4" />
+                귀하의 브라우저는 비디오 태그를 지원하지 않습니다.
+              </video>
+            </div>
+          </>
+        );
+      case 3:
+        return (
+          <>
+            <h4 className="text-xl font-semibold mt-0 mb-3 text-gray-800 dark:text-gray-200">
               주요 기능
             </h4>
             <div className="space-y-4">
@@ -144,7 +177,7 @@ const BabynoteContent: React.FC = () => {
             </div>
           </>
         );
-      case 3:
+      case 4:
         return (
           <>
             <h4 className="text-xl font-semibold mt-0 mb-3 text-gray-800 dark:text-gray-200">
@@ -178,7 +211,7 @@ const BabynoteContent: React.FC = () => {
             </div>
           </>
         );
-      case 4:
+      case 5:
         return (
           <>
             <h4 className="text-xl font-semibold mt-0 mb-3 text-gray-800 dark:text-gray-200">
@@ -242,7 +275,7 @@ const response = await axios.post(
             </div>
           </>
         );
-      case 5:
+      case 6:
         return (
           <>
             <h4 className="text-xl font-semibold mt-0 mb-3 text-gray-800 dark:text-gray-200">
@@ -277,7 +310,7 @@ const response = await axios.post(
             </div>
           </>
         );
-      case 6:
+      case 7:
         return (
           <div className="py-4 space-y-8">
             <h4 className="text-2xl font-bold text-center text-gray-800 dark:text-gray-200 mb-8">
