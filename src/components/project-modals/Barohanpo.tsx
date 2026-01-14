@@ -1,10 +1,39 @@
 // Barohanpo.tsx
-import React, { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react"; // 페이지 넘기기 아이콘 사용
+import React, { useState, useRef, useEffect } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import ProjectOverview from "./barohanpo/ProjectOverview";
+import DemoVideo from "./barohanpo/DemoVideo";
+import FrontendSection from "./barohanpo/FrontendSection";
+import BackendSection from "./barohanpo/BackendSection";
+import DeploymentSection from "./barohanpo/DeploymentSection";
+import TroubleshootingSection from "./barohanpo/TroubleshootingSection";
+import LessonsLearned from "./barohanpo/LessonsLearned";
 
 const BarohanpoContent: React.FC = () => {
   const [step, setStep] = useState(1);
-  const totalSteps = 2; // 프로젝트 상세 내용을 3개의 페이지로 나눈다고 가정
+  const [expandedSections, setExpandedSections] = useState<{
+    [key: string]: boolean;
+  }>({});
+  const totalSteps = 7; // 프로젝트 개요, 프론트엔드, 백엔드, 서버&배포, 트러블 슈팅, 알게된 점, 시연 영상
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  const toggleSection = (sectionId: string) => {
+    setExpandedSections((prev) => ({
+      ...prev,
+      [sectionId]: !prev[sectionId],
+    }));
+  };
+
+  // 스크롤을 맨 위로 올리는 함수
+  const scrollToTop = () => {
+    if (contentRef.current) {
+      contentRef.current.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  useEffect(() => {
+    scrollToTop();
+  }, [step]);
 
   const goToNext = () => setStep((prev) => Math.min(prev + 1, totalSteps));
   const goToPrev = () => setStep((prev) => Math.max(prev - 1, 1));
@@ -12,50 +41,31 @@ const BarohanpoContent: React.FC = () => {
   // --- 페이지별 내용 정의 ---
   const renderContent = () => {
     switch (step) {
-      case 1:
+      case 1: // 프로젝트 개요
+        return <ProjectOverview />;
+
+      case 2: // 시연 영상
+        return <DemoVideo />;
+
+      case 3: // 프론트엔드
         return (
-          <>
-            <h4 className="text-xl font-semibold mt-0 mb-3 text-gray-800 dark:text-gray-200">
-              프로젝트 개요 (1/3)
-            </h4>
-            <p className="text-lg">
-              해당프로젝트 상세 내용 작성 진행 중입니다. 현재 어플리케이션
-              배포는 중지 되어있으며, 웹 모바일 환경으로 이용 가능합니다.
-            </p>
-            <div className="mt-4 p-4 bg-gray-50 rounded-lg">
-              <p>
-                <b>팀원:</b> 기획(2명) , UI/UX(1명), <b>개발(1명)</b>
-              </p>
-              <p className="mt-2 font-bold">바로한포 서비스 구성도</p>
-              <img
-                src="/barohanpo/1.png"
-                alt="서비스 구성도"
-                className="mt-2 rounded-lg max-w-full h-auto"
-              />
-            </div>
-          </>
+          <FrontendSection
+            expandedSections={expandedSections}
+            toggleSection={toggleSection}
+          />
         );
-      case 2:
-        return (
-          <>
-            <h4 className="text-xl font-semibold mt-0 mb-3 text-gray-800 dark:text-gray-200">
-              서비스 시연 영상 (2/3)
-            </h4>
-            <div className="mt-4 p-4 bg-gray-50 rounded-lg">
-              <video
-                className="w-[50vw] h-[50vh] max-w-2xl mx-auto rounded-lg shadow-md"
-                controls
-                controlsList="nodownload"
-                playsInline
-                preload="metadata"
-                poster="/barohanpo/2.png"
-              >
-                <source src="/barohanpo/barohanpo.mov" type="video/mp4" />
-                귀하의 브라우저는 비디오 태그를 지원하지 않습니다.
-              </video>
-            </div>
-          </>
-        );
+
+      case 4: // 백엔드
+        return <BackendSection />;
+
+      case 5: // 서버 & 배포
+        return <DeploymentSection />;
+
+      case 6: // 트러블 슈팅
+        return <TroubleshootingSection />;
+
+      case 7: // 알게된 점
+        return <LessonsLearned />;
 
       default:
         return null;
@@ -63,7 +73,7 @@ const BarohanpoContent: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6" ref={contentRef}>
       <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white border-b pb-2">
         바로한포: 약사 추천 영양제 서비스 상세
       </h3>
@@ -72,9 +82,7 @@ const BarohanpoContent: React.FC = () => {
         {renderContent()}
       </div>
 
-      {/* 페이지네이션 컨트롤 */}
       <div className="flex justify-between items-center pt-4">
-        {/* 이전 버튼 */}
         <button
           onClick={goToPrev}
           disabled={step === 1}
@@ -83,12 +91,10 @@ const BarohanpoContent: React.FC = () => {
           <ChevronLeft className="w-4 h-4" /> 이전
         </button>
 
-        {/* 페이지 표시 */}
         <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
           페이지 {step} / {totalSteps}
         </span>
 
-        {/* 다음 버튼 */}
         <button
           onClick={goToNext}
           disabled={step === totalSteps}
