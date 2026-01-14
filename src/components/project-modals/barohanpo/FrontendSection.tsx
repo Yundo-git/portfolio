@@ -145,25 +145,27 @@ module.exports = {
                     />
                   </button>
                   {expandedSections["pharmacyEndpoints"] && (
-                    <div className="p-3 space-y-2 text-sm bg-white dark:bg-gray-800">
-                      <p>
-                        • 주변 약국 조회:{" "}
-                        <code className="bg-gray-100 dark:bg-gray-700 px-1.5 py-0.5 rounded">
-                          GET /api/pharmacies/nearby
-                        </code>
-                      </p>
-                      <p>
-                        • 약국 상세 정보:{" "}
-                        <code className="bg-gray-100 dark:bg-gray-700 px-1.5 py-0.5 rounded">
-                          GET /api/pharmacies/:id
-                        </code>
-                      </p>
-                      <p>
-                        • 예약 생성:{" "}
-                        <code className="bg-gray-100 dark:bg-gray-700 px-1.5 py-0.5 rounded">
-                          POST /api/reservations
-                        </code>
-                      </p>
+                    <div className="flex p-3 space-y-2 text-sm bg-white dark:bg-gray-800 overflow-x-auto">
+                      <img
+                        src="/barohanpo/inmodal/1.png"
+                        alt="예약사진"
+                        className="w-1/3 p-2"
+                      />
+                      <img
+                        src="/barohanpo/inmodal/2.png"
+                        alt="예약완료"
+                        className="w-1/3 p-2"
+                      />
+                      <img
+                        src="/barohanpo/inmodal/3.png"
+                        alt="예약내역"
+                        className="w-1/3 p-2"
+                      />
+                      <img
+                        src="/barohanpo/inmodal/4.png"
+                        alt="예약취소"
+                        className="w-1/3 p-2"
+                      />
                     </div>
                   )}
                 </div>
@@ -184,25 +186,17 @@ module.exports = {
                     />
                   </button>
                   {expandedSections["userEndpoints"] && (
-                    <div className="p-3 space-y-2 text-sm bg-white dark:bg-gray-800">
-                      <p>
-                        • 내 정보 조회:{" "}
-                        <code className="bg-gray-100 dark:bg-gray-700 px-1.5 py-0.5 rounded">
-                          GET /api/users/me
-                        </code>
-                      </p>
-                      <p>
-                        • 정보 수정:{" "}
-                        <code className="bg-gray-100 dark:bg-gray-700 px-1.5 py-0.5 rounded">
-                          PATCH /api/users/me
-                        </code>
-                      </p>
-                      <p>
-                        • 회원 탈퇴:{" "}
-                        <code className="bg-gray-100 dark:bg-gray-700 px-1.5 py-0.5 rounded">
-                          DELETE /api/users/me
-                        </code>
-                      </p>
+                    <div className="flex p-3 space-y-2 text-sm bg-white dark:bg-gray-800">
+                      <img
+                        src="/barohanpo/inmodal/user1.png"
+                        alt="user1"
+                        className="w-1/2"
+                      />
+                      <img
+                        src="/barohanpo/inmodal/user2.png"
+                        alt="user2"
+                        className="w-1/2"
+                      />
                     </div>
                   )}
                 </div>
@@ -223,31 +217,47 @@ module.exports = {
                     />
                   </button>
                   {expandedSections["reviewEndpoints"] && (
-                    <div className="p-3 space-y-2 text-sm bg-white dark:bg-gray-800">
-                      <p>
-                        • 리뷰 목록 조회:{" "}
-                        <code className="bg-gray-100 dark:bg-gray-700 px-1.5 py-0.5 rounded">
-                          GET /api/reviews
-                        </code>
-                      </p>
-                      <p>
-                        • 리뷰 작성:{" "}
-                        <code className="bg-gray-100 dark:bg-gray-700 px-1.5 py-0.5 rounded">
-                          POST /api/reviews
-                        </code>
-                      </p>
-                      <p>
-                        • 리뷰 수정:{" "}
-                        <code className="bg-gray-100 dark:bg-gray-700 px-1.5 py-0.5 rounded">
-                          PATCH /api/reviews/:id
-                        </code>
-                      </p>
-                      <p>
-                        • 리뷰 삭제:{" "}
-                        <code className="bg-gray-100 dark:bg-gray-700 px-1.5 py-0.5 rounded">
-                          DELETE /api/reviews/:id
-                        </code>
-                      </p>
+                    <div className="flex p-3 space-y-2 text-sm bg-white dark:bg-gray-800">
+                      <img
+                        src="/barohanpo/inmodal/review1.png"
+                        alt="review1"
+                        className="w-1/2"
+                      />
+                      <img
+                        src="/barohanpo/inmodal/review2.png"
+                        alt="review2"
+                        className="w-1/2"
+                      />
+                    </div>
+                  )}
+                </div>
+                {/* 2-5. 찜하기 토글 */}
+                <div className="border border-gray-100 dark:border-gray-600 rounded-lg overflow-hidden">
+                  <button
+                    onClick={() => toggleSection("likeEndpoints")}
+                    className="w-full flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
+                  >
+                    <span className="font-medium text-gray-800 dark:text-gray-200">
+                      5. 찜하기 관련
+                    </span>
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform ${
+                        expandedSections["likeEndpoints"] ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+                  {expandedSections["likeEndpoints"] && (
+                    <div className="flex p-3 space-y-2 text-sm bg-white dark:bg-gray-800">
+                      <img
+                        src="/barohanpo/inmodal/like1.png"
+                        alt="like1"
+                        className="w-1/2"
+                      />
+                      <img
+                        src="/barohanpo/inmodal/like2.png"
+                        alt="like2"
+                        className="w-1/2"
+                      />
                     </div>
                   )}
                 </div>
@@ -272,15 +282,22 @@ module.exports = {
             />
           </button>
           {expandedSections["reduxState"] && (
-            <div className="p-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
-              <p className="mb-3">도메인별로 상태를 분리하여 관리했습니다.</p>
-              <ul className="list-disc pl-5 space-y-1">
-                <li>사용자 인증 상태 (auth)</li>
-                <li>약국 정보 (pharmacy)</li>
-                <li>예약 정보 (reservation)</li>
-                <li>리뷰 정보 (review)</li>
-              </ul>
-            </div>
+            <>
+              <div className="p-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+                <p className="mb-3">도메인별로 상태를 분리하여 관리했습니다.</p>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>사용자 인증 상태 (auth)</li>
+                  <li>약국 정보 (pharmacy)</li>
+                  <li>예약 정보 (reservation)</li>
+                  <li>리뷰 정보 (review)</li>
+                </ul>
+              </div>
+              <img
+                src="/barohanpo/inmodal/redux.png"
+                alt="redux"
+                className="p-4"
+              />
+            </>
           )}
         </div>
 
@@ -301,6 +318,14 @@ module.exports = {
           </button>
           {expandedSections["typescriptTypes"] && (
             <div className="border-t border-gray-200 dark:border-gray-700">
+              <p className="p-4">
+                타입스크립트를 적용해 안정성을 높혀 개발하였습니다.
+              </p>
+              <img
+                src="/barohanpo/inmodal/typeScript.png"
+                alt=""
+                className="p-4"
+              />
               <pre className="bg-gray-100 dark:bg-gray-700 p-4 text-sm overflow-x-auto">
                 {`export interface Reservation {
   p_id: number;
@@ -331,12 +356,30 @@ module.exports = {
           </button>
           {expandedSections["kakaoApi"] && (
             <div className="p-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 space-y-3">
-              <p>1. 카카오 로그인 API</p>
-              <p>2. 카카오 지도 API</p>
               <ul className="list-disc pl-5 space-y-1">
-                <li>커스텀 마커 디자인 적용</li>
-                <li>실시간 위치 추적</li>
-                <li>마커 클릭 시 해당 약국 정보 표시</li>
+                1. 카카오 로그인 API
+                <li>
+                  빠른 로그인을 위해 카카오 로그인 서비스를 개발하였습니다.
+                </li>
+                <li>
+                  사용자가 카카로 로그인 버튼을 클릭하면 백엔드의 카카오 로그인
+                  엔드포인트로 리다이렉트되며 카카오 로그인 페이지에서 인증 성공
+                  시 백엔드에서 설정한 리다이렉트 url로 리다이렉트되고,
+                   URL 파라미터에 login=success가 포함됩니다.
+                </li>
+                <li>
+                  인증 완료 후에는 백엔드로 부터 토큰을 요청하고 토큰이
+                  성공적으로 발급되면 redux에 사용자 정보가 저장됩니다.
+                </li>
+              </ul>
+              <ul className="list-disc pl-5 space-y-1">
+                2. 카카오 지도 API
+                <li>
+                  약국 페이지의 지도를 카카오 map api를 연동하여 개발하였습니다.
+                </li>
+                <li>카카오에서 제공하는 마커 디자인을 변경하였습니다.</li>
+                <li>실시간 위치를 알아와 현재 위치를 실시간으로 표시합니다.</li>
+                <li>마커 클릭 시 해당 약국 정보를 표시합니다.</li>
               </ul>
             </div>
           )}
