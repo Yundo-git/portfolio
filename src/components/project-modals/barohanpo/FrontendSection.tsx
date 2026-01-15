@@ -373,7 +373,11 @@ module.exports = {
                 </li>
               </ul>
               <div className="flex justify-center my-4">
-                <img src="/barohanpo/inmodal/kakaoLogin.png" alt="kakaoLogin" className="w-1/3"/>
+                <img
+                  src="/barohanpo/inmodal/kakaoLogin.png"
+                  alt="kakaoLogin"
+                  className="w-1/3"
+                />
               </div>
               <ul className="list-disc pl-5 space-y-1">
                 2. 카카오 지도 API
@@ -385,8 +389,16 @@ module.exports = {
                 <li>마커 클릭 시 해당 약국 정보를 표시합니다.</li>
               </ul>
               <div className="flex justify-around my-4">
-              <img src="/barohanpo/inmodal/kakaomap1.png" alt="kakaomap1" className="w-1/3"/>
-              <img src="/barohanpo/inmodal/kakaomap2.png" alt="kakaomap2" className="w-1/3"/>
+                <img
+                  src="/barohanpo/inmodal/kakaomap1.png"
+                  alt="kakaomap1"
+                  className="w-1/3"
+                />
+                <img
+                  src="/barohanpo/inmodal/kakaomap2.png"
+                  alt="kakaomap2"
+                  className="w-1/3"
+                />
               </div>
             </div>
           )}
@@ -410,8 +422,53 @@ module.exports = {
           {expandedSections["geolocation"] && (
             <div className="p-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
               <p>
-                사용자의 현재 위치 좌표를 기반으로 주변 약국 정보를 표시합니다.
+                주변 약국의 정보를 알아내기 위해 사용자의 현재위치 좌표를 알아와
+                주변의 약국 리스트를 보여줍니다.
               </p>
+              <div className="flex justify-center my-4">
+                <img
+                  src="/barohanpo/inmodal/geolocation.png"
+                  alt="geolocation"
+                  className="w-1/3"
+                />
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* 웹뷰 */}
+        <div className="rounded-lg bg-white dark:bg-gray-800 shadow overflow-hidden border border-gray-100 dark:border-gray-700">
+          <button
+            onClick={() => toggleSection("webview")}
+            className="w-full text-left p-4 flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+          >
+            <h5 className="font-semibold text-lg text-gray-800 dark:text-gray-200">
+              웹뷰(Capacitor)
+            </h5>
+            <ChevronRight
+              className={`w-5 h-5 transition-transform duration-200 ${
+                expandedSections["webview"] ? "transform rotate-90" : ""
+              }`}
+            />
+          </button>
+          {expandedSections["webview"] && (
+            <div className="p-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+              <p>
+                모바일 전용 서비스로 개발 하였으며 안드로이드&IOS 배포를
+                완료했습니다.(현재는 웹만 접속 가능)
+              </p>
+              <div className="flex justify-around my-4">
+                <img
+                  src="/barohanpo/inmodal/webview.png"
+                  alt="webview"
+                  className="w-1/3"
+                />
+                <img
+                  src="/barohanpo/inmodal/barohanpoapp.jpeg"
+                  alt="barohanpoapp"
+                  className="w-1/3"
+                />
+              </div>
             </div>
           )}
         </div>
