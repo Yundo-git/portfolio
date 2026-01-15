@@ -64,10 +64,20 @@ const BarohanpoContent: React.FC = () => {
         );
 
       case 5: // 서버 & 배포
-        return <DeploymentSection />;
+        return (
+          <DeploymentSection
+            expandedSections={expandedSections}
+            toggleSection={toggleSection}
+          />
+        );
 
       case 6: // 트러블 슈팅
-        return <TroubleshootingSection />;
+        return (
+          <TroubleshootingSection
+            expandedSections={expandedSections}
+            toggleSection={toggleSection}
+          />
+        );
 
       case 7: // 알게된 점
         return <LessonsLearned />;

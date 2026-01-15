@@ -1,21 +1,47 @@
 import React from "react";
-import { AlertTriangle } from "lucide-react";
+import { AlertTriangle, ChevronRight } from "lucide-react";
 
-const TroubleshootingSection = () => {
+interface TroubleshootingSectionProps {
+  expandedSections: { [key: string]: boolean };
+  toggleSection: (sectionId: string) => void;
+}
+
+const TroubleshootingSection: React.FC<TroubleshootingSectionProps> = ({
+  expandedSections,
+  toggleSection,
+}) => {
   return (
-    <div className="space-y-6">
-      <div className="flex items-center gap-2 text-xl font-semibold text-gray-800 dark:text-gray-200">
+    <div className="space-y-4">
+      <div className="flex items-center gap-2 text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
         <AlertTriangle className="w-5 h-5 text-yellow-500" />
         <h4>트러블 슈팅</h4>
       </div>
 
-      <div className="space-y-6">
-        <div className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
-          <h5 className="font-semibold text-lg mb-3">CORS 에러 해결</h5>
-          <div className="space-y-3">
+      {/* CORS 에러 해결 */}
+      <div className="rounded-lg bg-white dark:bg-gray-800 shadow overflow-hidden border border-gray-100 dark:border-gray-700">
+        <button
+          onClick={() => toggleSection("cors")}
+          className="w-full text-left p-4 flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+        >
+          <h5 className="font-semibold text-lg text-gray-800 dark:text-gray-200">
+            CORS 에러 해결
+          </h5>
+          <ChevronRight
+            className={`w-5 h-5 transition-transform duration-200 ${
+              expandedSections["cors"] ? "transform rotate-90" : ""
+            }`}
+          />
+        </button>
+        {expandedSections["cors"] && (
+          <div className="p-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 space-y-3">
             <p>
               <b>문제:</b> 배포 후 CORS 에러 발생
             </p>
+            <img
+              src="/barohanpo/inmodal/trouble/cors1.png"
+              alt="cors1.png"
+              className="w-full"
+            />{" "}
             <p>
               <b>원인:</b> 프론트엔드(barohanpo-fe.vercel.app)와
               백엔드(barohanpo.xyz)의 도메인이 달라 브라우저에서 차단
@@ -25,13 +51,26 @@ const TroubleshootingSection = () => {
               도메인 하위 도메인으로 통일
             </p>
           </div>
-        </div>
+        )}
+      </div>
 
-        <div className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
-          <h5 className="font-semibold text-lg mb-3">
+      {/* 시크릿 모드 로그인 문제 */}
+      <div className="rounded-lg bg-white dark:bg-gray-800 shadow overflow-hidden border border-gray-100 dark:border-gray-700">
+        <button
+          onClick={() => toggleSection("secretMode")}
+          className="w-full text-left p-4 flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+        >
+          <h5 className="font-semibold text-lg text-gray-800 dark:text-gray-200">
             시크릿 모드 로그인 문제
           </h5>
-          <div className="space-y-3">
+          <ChevronRight
+            className={`w-5 h-5 transition-transform duration-200 ${
+              expandedSections["secretMode"] ? "transform rotate-90" : ""
+            }`}
+          />
+        </button>
+        {expandedSections["secretMode"] && (
+          <div className="p-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 space-y-3">
             <p>
               <b>문제:</b> 시크릿 모드에서 카카오 로그인 시 토큰 전달 실패
             </p>
@@ -60,7 +99,7 @@ const clearOptions = {
 };`}
             </pre>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

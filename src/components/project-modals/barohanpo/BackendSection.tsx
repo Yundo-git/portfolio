@@ -38,6 +38,18 @@ const BackendSection: React.FC<BackendSectionProps> = ({
                 코드의 가독성과 유지보수성을 높이기 위해 MVC 패턴으로 아키텍처를
                 구성했습니다.
               </p>
+              <div className="flex gap-4">
+                <img
+                  src="/barohanpo/inmodal/backend/mvc1.png"
+                  alt="mvc1"
+                  className="w-1/2"
+                />
+                <img
+                  src="/barohanpo/inmodal/backend/mvc2.png"
+                  alt="mvc2"
+                  className="w-1/2"
+                />
+              </div>
             </div>
           )}
         </div>
@@ -86,9 +98,17 @@ const BackendSection: React.FC<BackendSectionProps> = ({
           {expandedSections["swagger"] && (
             <div className="p-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
               <p>
-                API 문서를 자동으로 생성하여 프론트엔드 개발자와의 협업을
-                용이하게 했습니다.
+                프론트엔드와 api 연동을 쉽게 테스트하고 정리하기 위해 swagger를
+                작성했습니다.
               </p>
+
+              <div className="flex justify-center my-4">
+                <img
+                  src="/barohanpo/inmodal/backend/swagger.png"
+                  alt="swagger"
+                  className="w-1/2"
+                />
+              </div>
             </div>
           )}
         </div>
@@ -121,6 +141,14 @@ const sendReservationEmail = async (reservationData) => {
   });
 };`}
               </pre>
+
+              <div className="flex justify-center my-4">
+                <img
+                  src="/barohanpo/inmodal/backend/email.png"
+                  alt="email"
+                  className="w-1/2"
+                />
+              </div>
             </div>
           )}
         </div>
@@ -142,7 +170,10 @@ const sendReservationEmail = async (reservationData) => {
           </button>
           {expandedSections["nickname"] && (
             <div className="p-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
-              <p>회원가입 시 자동으로 닉네임이 생성됩니다.</p>
+              <p>
+                회원가입 시 자동으로 닉네임이 생성됩니다. 이후 회원정보에서
+                수정이 가능합니다.
+              </p>
               <pre className="bg-gray-100 dark:bg-gray-700 p-4 rounded-md text-sm overflow-x-auto mt-2">
                 {`function generateRandomNickname() {
   const adj = adjectives[Math.floor(Math.random() * adjectives.length)];
