@@ -56,7 +56,12 @@ const BarohanpoContent: React.FC = () => {
         );
 
       case 4: // 백엔드
-        return <BackendSection />;
+        return (
+          <BackendSection
+            expandedSections={expandedSections}
+            toggleSection={toggleSection}
+          />
+        );
 
       case 5: // 서버 & 배포
         return <DeploymentSection />;

@@ -1,44 +1,118 @@
-import React from "react";
-import { Server } from "lucide-react";
+import React, { useState } from "react";
+import { Server, ChevronRight, ChevronDown } from "lucide-react";
 
-const BackendSection = () => {
+interface BackendSectionProps {
+  expandedSections: { [key: string]: boolean };
+  toggleSection: (sectionId: string) => void;
+}
+
+const BackendSection: React.FC<BackendSectionProps> = ({
+  expandedSections,
+  toggleSection,
+}) => {
   return (
     <>
       <div className="flex items-center gap-2 text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
         <Server className="w-5 h-5" />
         <h4>백엔드 개발</h4>
       </div>
-      <div className="space-y-6">
-        <div className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
-          <h5 className="font-semibold text-lg mb-3">MVC 패턴 적용</h5>
-          <p>
-            코드의 가독성과 유지보수성을 높이기 위해 MVC 패턴으로 아키텍처를
-            구성했습니다.
-          </p>
+      <div className="space-y-4">
+        {/* MVC 패턴 적용 */}
+        <div className="rounded-lg bg-white dark:bg-gray-800 shadow overflow-hidden border border-gray-100 dark:border-gray-700">
+          <button
+            onClick={() => toggleSection("mvc")}
+            className="w-full text-left p-4 flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+          >
+            <h5 className="font-semibold text-lg text-gray-800 dark:text-gray-200">
+              MVC 패턴 적용
+            </h5>
+            <ChevronRight
+              className={`w-5 h-5 transition-transform duration-200 ${
+                expandedSections["mvc"] ? "transform rotate-90" : ""
+              }`}
+            />
+          </button>
+          {expandedSections["mvc"] && (
+            <div className="p-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+              <p>
+                코드의 가독성과 유지보수성을 높이기 위해 MVC 패턴으로 아키텍처를
+                구성했습니다.
+              </p>
+            </div>
+          )}
         </div>
 
-        <div className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
-          <h5 className="font-semibold text-lg mb-3">JWT 인증 시스템</h5>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>Access Token (15분 만료)</li>
-            <li>Refresh Token (7일 만료)</li>
-            <li>토큰 재발급 로직 구현</li>
-          </ul>
+        {/* JWT 인증 시스템 */}
+        <div className="rounded-lg bg-white dark:bg-gray-800 shadow overflow-hidden border border-gray-100 dark:border-gray-700">
+          <button
+            onClick={() => toggleSection("jwt")}
+            className="w-full text-left p-4 flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+          >
+            <h5 className="font-semibold text-lg text-gray-800 dark:text-gray-200">
+              JWT 인증 시스템
+            </h5>
+            <ChevronRight
+              className={`w-5 h-5 transition-transform duration-200 ${
+                expandedSections["jwt"] ? "transform rotate-90" : ""
+              }`}
+            />
+          </button>
+          {expandedSections["jwt"] && (
+            <div className="p-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+              <ul className="list-disc pl-5 space-y-1">
+                <li>Access Token (15분 만료)</li>
+                <li>Refresh Token (7일 만료)</li>
+                <li>토큰 재발급 로직 구현</li>
+              </ul>
+            </div>
+          )}
         </div>
 
-        <div className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
-          <h5 className="font-semibold text-lg mb-3">Swagger 문서화</h5>
-          <p>
-            API 문서를 자동으로 생성하여 프론트엔드 개발자와의 협업을 용이하게
-            했습니다.
-          </p>
+        {/* Swagger 문서화 */}
+        <div className="rounded-lg bg-white dark:bg-gray-800 shadow overflow-hidden border border-gray-100 dark:border-gray-700">
+          <button
+            onClick={() => toggleSection("swagger")}
+            className="w-full text-left p-4 flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+          >
+            <h5 className="font-semibold text-lg text-gray-800 dark:text-gray-200">
+              Swagger 문서화
+            </h5>
+            <ChevronRight
+              className={`w-5 h-5 transition-transform duration-200 ${
+                expandedSections["swagger"] ? "transform rotate-90" : ""
+              }`}
+            />
+          </button>
+          {expandedSections["swagger"] && (
+            <div className="p-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+              <p>
+                API 문서를 자동으로 생성하여 프론트엔드 개발자와의 협업을
+                용이하게 했습니다.
+              </p>
+            </div>
+          )}
         </div>
 
-        <div className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
-          <h5 className="font-semibold text-lg mb-3">이메일 알림 시스템</h5>
-          <p>예약 완료 시 관리자에게 자동으로 이메일이 발송됩니다.</p>
-          <pre className="bg-gray-100 dark:bg-gray-700 p-4 rounded-md text-sm overflow-x-auto mt-2">
-            {`// 예약 완료 시 이메일 발송 로직
+        {/* 이메일 알림 시스템 */}
+        <div className="rounded-lg bg-white dark:bg-gray-800 shadow overflow-hidden border border-gray-100 dark:border-gray-700">
+          <button
+            onClick={() => toggleSection("email")}
+            className="w-full text-left p-4 flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+          >
+            <h5 className="font-semibold text-lg text-gray-800 dark:text-gray-200">
+              이메일 알림 시스템
+            </h5>
+            <ChevronRight
+              className={`w-5 h-5 transition-transform duration-200 ${
+                expandedSections["email"] ? "transform rotate-90" : ""
+              }`}
+            />
+          </button>
+          {expandedSections["email"] && (
+            <div className="p-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+              <p>예약 완료 시 관리자에게 자동으로 이메일이 발송됩니다.</p>
+              <pre className="bg-gray-100 dark:bg-gray-700 p-4 rounded-md text-sm overflow-x-auto mt-2">
+                {`// 예약 완료 시 이메일 발송 로직
 const sendReservationEmail = async (reservationData) => {
   await emailSender({
     to: 'admin@barohanpo.xyz',
@@ -46,20 +120,39 @@ const sendReservationEmail = async (reservationData) => {
     html: generateReservationEmail(reservationData)
   });
 };`}
-          </pre>
+              </pre>
+            </div>
+          )}
         </div>
 
-        <div className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
-          <h5 className="font-semibold text-lg mb-3">닉네임 자동 생성</h5>
-          <p>회원가입 시 자동으로 닉네임이 생성됩니다.</p>
-          <pre className="bg-gray-100 dark:bg-gray-700 p-4 rounded-md text-sm overflow-x-auto mt-2">
-            {`function generateRandomNickname() {
+        {/* 닉네임 자동 생성 */}
+        <div className="rounded-lg bg-white dark:bg-gray-800 shadow overflow-hidden border border-gray-100 dark:border-gray-700">
+          <button
+            onClick={() => toggleSection("nickname")}
+            className="w-full text-left p-4 flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+          >
+            <h5 className="font-semibold text-lg text-gray-800 dark:text-gray-200">
+              닉네임 자동 생성
+            </h5>
+            <ChevronRight
+              className={`w-5 h-5 transition-transform duration-200 ${
+                expandedSections["nickname"] ? "transform rotate-90" : ""
+              }`}
+            />
+          </button>
+          {expandedSections["nickname"] && (
+            <div className="p-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+              <p>회원가입 시 자동으로 닉네임이 생성됩니다.</p>
+              <pre className="bg-gray-100 dark:bg-gray-700 p-4 rounded-md text-sm overflow-x-auto mt-2">
+                {`function generateRandomNickname() {
   const adj = adjectives[Math.floor(Math.random() * adjectives.length)];
   const noun = nouns[Math.floor(Math.random() * nouns.length)];
   const num = Math.floor(100 + Math.random() * 900); // 100~999
   return \`\${adj}\${noun}\${num}\`;
 }`}
-          </pre>
+              </pre>
+            </div>
+          )}
         </div>
       </div>
     </>
