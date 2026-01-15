@@ -372,6 +372,9 @@ module.exports = {
                   성공적으로 발급되면 redux에 사용자 정보가 저장됩니다.
                 </li>
               </ul>
+              <div className="flex justify-center my-4">
+                <img src="/barohanpo/inmodal/kakaoLogin.png" alt="kakaoLogin" className="w-1/3"/>
+              </div>
               <ul className="list-disc pl-5 space-y-1">
                 2. 카카오 지도 API
                 <li>
@@ -381,6 +384,10 @@ module.exports = {
                 <li>실시간 위치를 알아와 현재 위치를 실시간으로 표시합니다.</li>
                 <li>마커 클릭 시 해당 약국 정보를 표시합니다.</li>
               </ul>
+              <div className="flex justify-around my-4">
+              <img src="/barohanpo/inmodal/kakaomap1.png" alt="kakaomap1" className="w-1/3"/>
+              <img src="/barohanpo/inmodal/kakaomap2.png" alt="kakaomap2" className="w-1/3"/>
+              </div>
             </div>
           )}
         </div>

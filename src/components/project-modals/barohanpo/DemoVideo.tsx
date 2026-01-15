@@ -12,7 +12,7 @@ const DemoVideo = () => {
       <div className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
         <div className="aspect-w-16 aspect-h-9">
           <video
-            className="w-[50vw] h-[50vh] max-w-4xl mx-auto rounded-lg"
+            className="w-full h-[50vh] max-w-4xl mx-auto rounded-lg"
             controls
             controlsList="nodownload"
             playsInline
