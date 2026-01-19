@@ -38,10 +38,15 @@ const TroubleshootingSection: React.FC<TroubleshootingSectionProps> = ({
               <b>문제:</b> 배포 후 CORS 에러 발생
             </p>
             <img
+              src="/barohanpo/inmodal/trouble/cors2.png"
+              alt="cors2.png"
+              className="w-full"
+            />
+            <img
               src="/barohanpo/inmodal/trouble/cors1.png"
               alt="cors1.png"
               className="w-full"
-            />{" "}
+            />
             <p>
               <b>원인:</b> 프론트엔드(barohanpo-fe.vercel.app)와
               백엔드(barohanpo.xyz)의 도메인이 달라 브라우저에서 차단
@@ -71,8 +76,26 @@ const TroubleshootingSection: React.FC<TroubleshootingSectionProps> = ({
         </button>
         {expandedSections["secretMode"] && (
           <div className="p-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 space-y-3">
+            <img
+              src="/barohanpo/inmodal/trouble/cookie.png"
+              alt="cookie.png"
+              className="w-full"
+            />
+            <p>사진 설명: 쿠키값이 전달 되지않는 비정상 헤더(시크릿모드)</p>
+            <img
+              src="/barohanpo/inmodal/trouble/cookie2.png"
+              alt="cookie2.png"
+              className="w-full"
+            />
+            <p>사진 설명: 쿠키값이 전달 되지않는 비정상 헤더(시크릿모드)</p>
             <p>
               <b>문제:</b> 시크릿 모드에서 카카오 로그인 시 토큰 전달 실패
+            </p>
+            <p>
+              <b>
+                특이사항: 서비스의 프론트엔드와 백엔드 URL이 동일한 도메인
+                환경이었음에도 불구하고 쿠키가 저장되지 않음.
+              </b>
             </p>
             <p>
               <b>원인:</b> 서드파티 쿠키 차단 정책으로 인한 쿠키 저장 실패
