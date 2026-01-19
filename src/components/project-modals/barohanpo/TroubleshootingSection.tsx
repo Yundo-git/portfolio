@@ -47,6 +47,19 @@ const TroubleshootingSection: React.FC<TroubleshootingSectionProps> = ({
               alt="cors1.png"
               className="w-full"
             />
+            <img
+              src="/barohanpo/inmodal/trouble/cors3.png"
+              alt="cors3.png"
+              className="w-full"
+            />
+            <p>
+              <b>문제:</b> 배포 후 CORS 에러 발생
+            </p>
+            <p>
+              <b>특이사항:</b> 위 사진처럼 백엔드에 cors 허용 설정을 하였으나
+              문제는 해결 되지 않았고 이는 기존에 cors 설정에 이해도가 떨어져
+              발생한 상황
+            </p>
             <p>
               <b>원인:</b> 프론트엔드(barohanpo-fe.vercel.app)와
               백엔드(barohanpo.xyz)의 도메인이 달라 브라우저에서 차단
@@ -55,6 +68,11 @@ const TroubleshootingSection: React.FC<TroubleshootingSectionProps> = ({
               <b>해결:</b> 프론트엔드 URL을 app.barohanpo.xyz로 변경하여 동일
               도메인 하위 도메인으로 통일
             </p>
+            <img
+              src="/barohanpo/inmodal/trouble/cors4.png"
+              alt="cors4.png"
+              className="w-full"
+            />
           </div>
         )}
       </div>
@@ -97,9 +115,18 @@ const TroubleshootingSection: React.FC<TroubleshootingSectionProps> = ({
                 환경이었음에도 불구하고 쿠키가 저장되지 않음.
               </b>
             </p>
-            <p>
-              <b>원인:</b> 서드파티 쿠키 차단 정책으로 인한 쿠키 저장 실패
-            </p>
+            <div className="space-y-2 mt-4">
+              <p className="font-medium">- Third-party Cookies 차단 정책</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300 pl-4">
+                시크릿모드에서는 기본적으로 교차사이트 추적 방지를 위해 서드파티
+                쿠키를 차단.
+              </p>
+              <p className="text-sm text-gray-600 dark:text-gray-300 pl-4">
+                카카오 로그인 과정에서 카카오의 인증서버인 kauth.kakao.com과
+                프로젝트의 URL을 오갈때 브라우저는 카카오에서 생성한 데이터를
+                서드파티리소스로 간주하여 차단된 상황
+              </p>
+            </div>
             <p>
               <b>해결:</b> sameSite 옵션을 "lax"로 변경하여 시크릿 모드에서도
               정상 동작하도록 수정
